@@ -1,0 +1,5 @@
+# ignore the generated fish file
+/fishd.*
+
+# ignore Gutetags' notags file
+/.notags
