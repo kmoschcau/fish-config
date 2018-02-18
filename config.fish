@@ -19,7 +19,10 @@ function fish_mode_prompt; end
 
 # powerline | powerline/powerline {{{1
 
-set fish_function_path $fish_function_path "$HOME/.pyenv/versions/3.6.3/lib/python3.6/site-packages/powerline/bindings/fish"
-powerline-setup
+set -l powerline_path "$HOME/.pyenv/versions/3.6.4/lib/python3.6/site-packages/powerline/bindings/fish"
+if [ -x $powerline_path ]
+  set fish_function_path $fish_function_path $powerline_path
+  powerline-setup
+end
 
 # }}}1
