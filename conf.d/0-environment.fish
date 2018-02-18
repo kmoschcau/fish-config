@@ -6,7 +6,9 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 
 # add user's .local/bin to path for compatibility with systemd
-set -x PATH "$HOME/.local/bin" $PATH
+if [ -d "$HOME/.local/bin" ]
+  set -x PATH "$HOME/.local/bin" $PATH
+end
 
 # check if openJDK 8 is installed
 if [ -d '/usr/lib/jvm/java-8-openjdk-amd64' ]
