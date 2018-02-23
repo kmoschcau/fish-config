@@ -91,3 +91,6 @@ set -x BUNDLER_EDITOR 'nvim'
 set -x EDITOR 'nvim'
 # editor tried before EDITOR as "visual editor"
 set -x VISUAL 'nvim'
+
+# help GPG to ask for a passphrase when using it for git commits
+set -x GPG_TTY (tty)
