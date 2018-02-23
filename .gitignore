@@ -1,5 +1,8 @@
 # ignore the generated fish file
 /fishd.*
 
+# ignore the fish history file
+/fish_history
+
 # ignore Gutetags' notags file
 /.notags
