@@ -66,7 +66,7 @@ if [ -d "$HOME/.pyenv" ]
   # enabled dynamic Python libraries
   set -x PYTHON_CONFIGURE_OPTS '--enable-shared'
   # load pyenv
-  pyenv rehash
+  status --is-interactive; and source (pyenv init - | psub)
 end
 
 # check if rbenv is installed
@@ -76,7 +76,7 @@ if [ -d "$HOME/.rbenv" ]
   # add rbenv to PATH
   set -x PATH "$RBENV_ROOT/shims" "$RBENV_ROOT/bin" $PATH
   # load rbenv
-  rbenv rehash
+  status --is-interactive; and source (rbenv init - | psub)
 end
 
 # add user's private bin to PATH, if it exists
