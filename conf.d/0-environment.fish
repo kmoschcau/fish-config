@@ -79,6 +79,12 @@ if [ -d "$HOME/.rbenv" ]
   status --is-interactive; and source (rbenv init - | psub)
 end
 
+# check if gradle is installed
+if [ -d '/opt/gradle' ]
+  # add gradle to PATH
+  set -x PATH '/opt/gradle/bin' $PATH
+end
+
 # add user's private bin to PATH, if it exists
 if [ -d "$HOME/bin" ]
   set -x PATH "$HOME/bin" $PATH
