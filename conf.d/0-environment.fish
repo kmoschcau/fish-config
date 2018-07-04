@@ -5,6 +5,11 @@
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 
+# set the SHELL variable to fish, if it isn't already set
+if [ -z $SHELL ]
+  set -x SHELL (which fish)
+end
+
 # add user's .local/bin to path for compatibility with systemd
 if [ -d "$HOME/.local/bin" ]
   set -x PATH "$HOME/.local/bin" $PATH
@@ -88,11 +93,6 @@ end
 # add user's private bin to PATH, if it exists
 if [ -d "$HOME/bin" ]
   set -x PATH "$HOME/bin" $PATH
-end
-
-# set the SHELL variable to fish, if it isn't already set
-if [ -z $SHELL ]
-  set -x SHELL (which fish)
 end
 
 # editor used by `bundle open <gem>`
