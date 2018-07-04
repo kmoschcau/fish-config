@@ -90,9 +90,13 @@ if [ -d "$HOME/bin" ]
   set -x PATH "$HOME/bin" $PATH
 end
 
+# set the SHELL variable to fish, if it isn't already set
+if [ -z $SHELL ]
+  set -x SHELL (which fish)
+end
+
 # editor used by `bundle open <gem>`
 set -x BUNDLER_EDITOR 'nvim'
-
 # editor used as "line editor"
 set -x EDITOR 'nvim'
 # editor tried before EDITOR as "visual editor"
