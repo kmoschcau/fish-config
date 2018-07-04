@@ -66,7 +66,7 @@ if [ -d "$HOME/.pyenv" ]
   # enabled dynamic Python libraries
   set -x PYTHON_CONFIGURE_OPTS '--enable-shared'
   # load pyenv
-  status --is-interactive; and source (pyenv init - | psub)
+  status --is-interactive; and pyenv init - | source
 end
 
 # check if rbenv is installed
@@ -76,7 +76,7 @@ if [ -d "$HOME/.rbenv" ]
   # add rbenv to PATH
   set -x PATH "$RBENV_ROOT/shims" "$RBENV_ROOT/bin" $PATH
   # load rbenv
-  status --is-interactive; and source (rbenv init - | psub)
+  status --is-interactive; and rbenv init - | source
 end
 
 # check if gradle is installed
