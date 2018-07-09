@@ -9,6 +9,9 @@ if status --is-interactive
   eval (keychain --agents ssh --clear --eval id_rsa)
 end
 
+# enable vi mode in fish
+fish_vi_key_bindings
+
 # Set the cursor shapes for the different vi modes.
 set fish_cursor_default     block      blink
 set fish_cursor_insert      line       blink
