@@ -10,7 +10,10 @@ if status --is-interactive
 end
 
 # enable vi mode in fish
-fish_vi_key_bindings
+if status --is-interactive
+   and status --is-login
+  fish_vi_key_bindings
+end
 
 # Set the cursor shapes for the different vi modes.
 set fish_cursor_default     block      blink
