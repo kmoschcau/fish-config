@@ -15,22 +15,6 @@ if [ -d "$HOME/.local/bin" ]
   set -x PATH "$HOME/.local/bin" $PATH
 end
 
-# check if openJDK 8 is installed
-if [ -d '/usr/lib/jvm/java-8-openjdk-amd64' ]
-  # create JAVA_HOME
-  set -x JAVA_HOME '/usr/lib/jvm/java-8-openjdk-amd64'
-  # add JAVA_HOME binary directory to PATH
-  set -x PATH "$JAVA_HOME/bin" $PATH
-end
-
-# check if Scala is installed
-if [ -d '/usr/local/share/scala' ]
-  # create SCALA_HOME
-  set -x SCALA_HOME '/usr/local/share/scala'
-  # add SCALA_HOME binary directory to PATH
-  set -x PATH "$SCALA_HOME/bin" $PATH
-end
-
 # check if Eclipse Oxygen is installed
 if [ -d "$HOME/eclipse/oxygen/eclipse" ]
   # create ECLIPSE_HOME
@@ -40,20 +24,6 @@ if [ -d "$HOME/eclipse/oxygen/eclipse" ]
     # add Eclim binary directory to PATH
     set -x PATH "$ECLIPSE_HOME/plugins/org.eclim_2.7.0/bin" $PATH
   end
-end
-
-# check if Go(lang) is installed
-if [ -d "$HOME/go" ]
-  # set the path for Go(lang) sources and things
-  set -x GOPATH "$HOME/go"
-  # add Go binaries to PATH
-  set -x PATH "$GOPATH/bin" $PATH
-end
-
-# check if gvm (Go version manager) is installed
-if [ -s "$HOME/.gvm/scripts/gvm" ]
-  # source gvm
-  # . "$HOME/.gvm/scripts/gvm"
 end
 
 # check if rustup (Rust version and package manager) is installed
