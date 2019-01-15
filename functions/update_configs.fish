@@ -1,7 +1,9 @@
-function update_configs --description 'Update all configurations in XDG_CONFIG_HOME'
+function update_configs \
+         --description 'Update all configurations in XDG_CONFIG_HOME'
   set base_uri git@bitbucket.org:kmoschcau/
   set home_config home-config
-  set configs compton fish git i3 i3blocks nvim powerline ranger rofi terminator tig
+  set configs Code compton fish git i3 i3blocks nvim powerline ranger rofi \
+              terminator tig
 
   if not command -v git > /dev/null ^ /dev/null
     echo 'git is not installed!'
