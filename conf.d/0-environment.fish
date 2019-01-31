@@ -70,6 +70,27 @@ if [ -d "$HOME/bin" ]; and not contains "$HOME/bin" $PATH
   set -x PATH "$HOME/bin" $PATH
 end
 
+# add default settings for fzf, if it is installed
+if command -v fzf > /dev/null ^ /dev/null
+  set -x FZF_DEFAULT_OPTS (string join ' ' --\
+                                       '--ansi'\
+                                       '--inline-info'\
+                                       '--tabstop=2'\
+                                       (string join ',' --\
+                                                    '--color=light'\
+                                                    'fg:#666666'\
+                                                    'bg:#fafafa'\
+                                                    'hl:#f44336'\
+                                                    'fg+:#666666'\
+                                                    'bg+:#cceae7'\
+                                                    'hl+:#f44336'\
+                                                    'info:#82a550'\
+                                                    'border:#cceae7'\
+                                                    'prompt:#39adb5'\
+                                                    'pointer:#f44336'\
+                                                    'marker:#e57373'))
+end
+
 # remove duplicate entries from path
 deduplicate_path
 
