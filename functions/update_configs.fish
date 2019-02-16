@@ -1,7 +1,7 @@
 function update_configs \
          --description 'Update all configurations in XDG_CONFIG_HOME'
   set base_uri git@bitbucket.org:kmoschcau/
-  set home_config home-config
+  set irregular_configs global-config home-config
   set configs Code compton fish git i3 i3blocks nvim powerline ranger rofi \
               terminator tig
 
@@ -20,19 +20,19 @@ function update_configs \
     return 3
   end
 
-  begin
-    echo "Updating $home_config..."
-    set dir_name $XDG_CONFIG_HOME/$home_config
+  for config_name in $irregular_configs
+    echo "Updating $config_name..."
+    set dir_name $XDG_CONFIG_HOME/$config_name
     if not test -d $dir_name
-      echo "No $home_config repository, cloning..."
-      git clone $base_uri$home_config.git $dir_name
+      echo "No $config_name repository, cloning..."
+      git clone $base_uri$config_name.git $dir_name
     else
-      echo "Existing $home_config repository, updating..."
+      echo "Existing $config_name repository, updating..."
       pushd $dir_name
       git fetch --prune; and git pull
       popd
     end
-    echo "Updated $home_config."
+    echo "Updated $config_name."
   end
 
   for config_name in $configs
