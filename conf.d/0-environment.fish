@@ -65,6 +65,21 @@ if [ -d '/opt/gradle' ]; and not contains '/opt/gradle' $PATH
   set -x PATH '/opt/gradle/bin' $PATH
 end
 
+# check if yarn (node package manager) is installed
+if [ -d "$HOME/.yarn" ]
+  # add yarn binaries to PATH
+  if not contains "$HOME/.yarn/bin" $PATH
+    set -x PATH "$HOME/.yarn/bin" $PATH
+  end
+  # check if node modules binaries dir exists
+  if [ -d "$HOME/.config/yarn/global/node_modules/.bin" ]
+    # add node modules binaries to PATH
+    if not contains "$HOME/.config/yarn/global/node_modules/.bin" $PATH
+      set -x PATH "$HOME/.config/yarn/global/node_modules/.bin" $PATH
+    end
+  end
+end
+
 # add user's private bin to PATH, if it exists
 if [ -d "$HOME/bin" ]; and not contains "$HOME/bin" $PATH
   set -x PATH "$HOME/bin" $PATH
