@@ -59,6 +59,18 @@ if [ -d "$HOME/.rbenv" ]
   status --is-interactive; and rbenv init - | source
 end
 
+# check if nodenv is installed
+if [ -d "$HOME/.nodenv" ]
+  # create NODENV_ROOT
+  set -x NODENV_ROOT "$HOME/.nodenv"
+  # add NODENV_ROOT binaries to PATH
+  if not contains "$NODENV_ROOT/bin" $PATH
+    set -x PATH "$NODENV_ROOT/bin" $PATH
+  end
+  # load nodenv
+  status --is-interactive; and nodenv init - | source
+end
+
 # check if gradle is installed
 if [ -d '/opt/gradle' ]; and not contains '/opt/gradle' $PATH
   # add gradle to PATH
