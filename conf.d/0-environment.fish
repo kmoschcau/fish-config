@@ -97,6 +97,9 @@ if [ -d "$HOME/bin" ]; and not contains "$HOME/bin" $PATH
   set -x PATH "$HOME/bin" $PATH
 end
 
+# remove duplicate entries from path
+deduplicate_path
+
 # add default settings for fzf, if it is installed
 if command -v fzf > /dev/null ^ /dev/null
   set -x FZF_DEFAULT_OPTS (string join ' ' --\
@@ -118,9 +121,6 @@ if command -v fzf > /dev/null ^ /dev/null
                                                     'pointer:#f44336'\
                                                     'marker:#e57373'))
 end
-
-# remove duplicate entries from path
-deduplicate_path
 
 # editor used by `bundle open <gem>`
 set -x BUNDLER_EDITOR 'nvim'
