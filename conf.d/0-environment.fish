@@ -120,6 +120,13 @@ if command -v fzf > /dev/null ^ /dev/null
                                                     'prompt:#39adb5'\
                                                     'pointer:#f44336'\
                                                     'marker:#e57373'))
+  if command -v rg > /dev/null ^ /dev/null
+    set -x FZF_DEFAULT_COMMAND 'rg --files --hidden'
+  else if command -v ag > /dev/null ^ /dev/null
+    set -x FZF_DEFAULT_COMMAND 'ag --files-with-matches --hidden'
+  else
+    set -x FZF_DEFAULT_COMMAND 'find -type -f'
+  end
 end
 
 # editor used by `bundle open <gem>`
