@@ -106,7 +106,6 @@ if command -v fzf > /dev/null ^ /dev/null
                                        '--ansi'\
                                        '--inline-info'\
                                        '--tabstop=2'\
-                                       "--preview 'fzf_preview {}'"\
                                        (string join ',' --\
                                                     '--color=light'\
                                                     'fg:#666666'\
