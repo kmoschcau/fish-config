@@ -72,10 +72,14 @@ if [ -d "$HOME/.nodenv" ]
 end
 
 # check if gradle is installed
-if [ -d '/opt/gradle' ]; and not contains '/opt/gradle' $PATH
+set --local gradle_version '5.6.2'
+set --local gradle_bin_path "/opt/gradle/gradle-$gradle_version/bin"
+if [ -d $gradle_bin_path ]; and not contains $gradle_bin_path $PATH
   # add gradle to PATH
-  set -x PATH '/opt/gradle/bin' $PATH
+  set -x PATH $gradle_bin_path $PATH
 end
+set --erase gradle_version
+set --erase gradle_bin_path
 
 # check if yarn (node package manager) is installed
 if [ -d "$HOME/.yarn" ]
