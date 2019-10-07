@@ -1,3 +1,4 @@
-function ll --description 'List contents of directory using -aFhl and colors'
-  command ls -aFhl --color=auto $argv
+function ll --description 'll with default options'
+  command ls --all --color=auto --classify --human-readable -l\
+             --hide-control-chars $argv
 end
