@@ -132,6 +132,17 @@ if command -v fzf > /dev/null ^ /dev/null
   end
 end
 
+# grep default colors
+set -x GREP_COLORS (string join ':'\
+                                'sl='\
+                                'cx='\
+                                'ms=1;48;2;255;152;0'\
+                                'mc=48;2;255;235;59'\
+                                'fn=38;2;236;239;241;48;2;69;90;100'\
+                                'ln=38;2;96;125;139;48;2;144;164;174'\
+                                'bn=38;2;96;125;139;48;2;144;164;174'\
+                                'se=38;2;96;125;139;48;2;144;164;174')
+
 # editor used by `bundle open <gem>`
 set -x BUNDLER_EDITOR 'nvim'
 # editor used as "line editor"
