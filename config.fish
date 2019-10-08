@@ -1,14 +1,5 @@
 # vim: foldmethod=marker
 
-if status --is-interactive
-   and status --is-login
-   and [ -z "$XDG_CURRENT_DESKTOP" ]
-   and [ -z "$TMUX" ]
-   and command --search keychain
-  # use keychain to add our rsa key
-  eval (keychain --agents ssh --clear --eval id_rsa)
-end
-
 # enable vi mode in fish
 if status --is-interactive
    and status --is-login
