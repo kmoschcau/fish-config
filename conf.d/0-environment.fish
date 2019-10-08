@@ -44,7 +44,7 @@ if [ -d "$HOME/.pyenv" ]
   # enabled dynamic Python libraries
   set -x PYTHON_CONFIGURE_OPTS '--enable-shared'
   # load pyenv
-  status --is-interactive; and pyenv init - | source
+  status --is-interactive; and pyenv init - | source -
 end
 
 # check if rbenv is installed
@@ -56,7 +56,7 @@ if [ -d "$HOME/.rbenv" ]
     set -x PATH "$RBENV_ROOT/bin" $PATH
   end
   # load rbenv
-  status --is-interactive; and rbenv init - | source
+  status --is-interactive; and rbenv init - | source -
 end
 
 # check if nodenv is installed
@@ -68,7 +68,7 @@ if [ -d "$HOME/.nodenv" ]
     set -x PATH "$NODENV_ROOT/bin" $PATH
   end
   # load nodenv
-  status --is-interactive; and nodenv init - | source
+  status --is-interactive; and nodenv init - | source -
 end
 
 # check if gradle is installed
@@ -105,7 +105,7 @@ end
 deduplicate_path
 
 # add default settings for fzf, if it is installed
-if command -v fzf > /dev/null ^ /dev/null
+if command -v fzf > /dev/null 2> /dev/null
   set -x FZF_DEFAULT_OPTS (string join ' ' --\
                                        '--ansi'\
                                        '--inline-info'\
@@ -123,9 +123,9 @@ if command -v fzf > /dev/null ^ /dev/null
                                                     'prompt:#39adb5'\
                                                     'pointer:#f44336'\
                                                     'marker:#e57373'))
-  if command -v rg > /dev/null ^ /dev/null
+  if command -v rg > /dev/null 2> /dev/null
     set -x FZF_DEFAULT_COMMAND 'rg --files --hidden'
-  else if command -v ag > /dev/null ^ /dev/null
+  else if command -v ag > /dev/null 2> /dev/null
     set -x FZF_DEFAULT_COMMAND 'ag --files-with-matches --hidden'
   else
     set -x FZF_DEFAULT_COMMAND 'find -type -f'

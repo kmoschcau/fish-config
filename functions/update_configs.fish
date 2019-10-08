@@ -5,7 +5,7 @@ function update_configs \
   set configs Code compton fish git i3 i3blocks nvim powerline ranger rofi \
               terminator tig
 
-  if not command -v git > /dev/null ^ /dev/null
+  if not command -v git > /dev/null 2> /dev/null
     echo 'git is not installed!'
     return 1
   end
