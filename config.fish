@@ -16,15 +16,15 @@ set fish_cursor_visual      block
 function fish_mode_prompt; end
 
 # powerline | powerline/powerline {{{1
-if command -v pyenv > /dev/null 2> /dev/null
+if command --search pyenv > /dev/null 2> /dev/null
   if pyenv which powerline > /dev/null 2> /dev/null
-    set -l path_tail 'lib/python3.7/site-packages/powerline/bindings/fish'
-    set -l powerline_path (string join \
-                             '/' \
+    set --local path_tail 'lib/python3.7/site-packages/powerline/bindings/fish'
+    set --local powerline_path\
+                (string join '/' \
                              (dirname (dirname (pyenv which powerline))) \
                              $path_tail)
-    if [ -x $powerline_path ]
-      set fish_function_path $fish_function_path $powerline_path
+    if test -x $powerline_path
+      set --append fish_function_path $powerline_path
       powerline-setup
     end
   end
