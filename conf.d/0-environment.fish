@@ -140,5 +140,6 @@ set --export VISUAL 'nvim'
 # editor for systemd
 set --export SYSTEMD_EDITOR 'nvim'
 
-# help GPG to ask for a passphrase when using it for git commits
+# Configure pinentry to use the correct TTY
 set --export GPG_TTY (tty)
+gpg-connect-agent updatestartuptty /bye > /dev/null
