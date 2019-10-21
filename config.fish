@@ -18,7 +18,7 @@ function fish_mode_prompt; end
 # powerline | powerline/powerline {{{1
 if command --search pyenv > /dev/null 2> /dev/null
   if pyenv which powerline > /dev/null 2> /dev/null
-    set --local path_tail 'lib/python3.7/site-packages/powerline/bindings/fish'
+    set --local path_tail 'lib/python3.8/site-packages/powerline/bindings/fish'
     set --local powerline_path\
                 (string join '/' \
                              (dirname (dirname (pyenv which powerline))) \
