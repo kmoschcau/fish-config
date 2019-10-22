@@ -84,23 +84,8 @@ deduplicate_path
 
 # add default settings for fzf, if it is installed
 if command --search fzf > /dev/null 2> /dev/null
-  set --export FZF_DEFAULT_OPTS (string join ' ' --\
-                                             '--ansi'\
-                                             '--inline-info'\
-                                             '--tabstop=2'\
-                                             (string join ',' --\
-                                                          '--color=light'\
-                                                          'fg:#666666'\
-                                                          'bg:#fafafa'\
-                                                          'hl:#f44336'\
-                                                          'fg+:#666666'\
-                                                          'bg+:#cceae7'\
-                                                          'hl+:#f44336'\
-                                                          'info:#82a550'\
-                                                          'border:#cceae7'\
-                                                          'prompt:#39adb5'\
-                                                          'pointer:#f44336'\
-                                                          'marker:#e57373'))
+  set --export FZF_DEFAULT_OPTS (cat $HOME/.config/fzf/default_opts.txt)
+
   if command --search rg > /dev/null 2> /dev/null
     set --export FZF_DEFAULT_COMMAND 'rg --files --hidden'
   else if command --search ag > /dev/null 2> /dev/null
