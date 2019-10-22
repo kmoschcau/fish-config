@@ -3,7 +3,7 @@ function update_configs \
   set base_uri git@bitbucket.org:kmoschcau/
   set irregular_configs global-config home-config
   set configs Code compton fish git i3 i3blocks nvim powerline ranger rofi \
-              terminator tig
+              rubocop terminator tig
 
   if not command -v git > /dev/null 2> /dev/null
     echo 'git is not installed!'
