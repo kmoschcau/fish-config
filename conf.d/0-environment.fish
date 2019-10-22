@@ -10,16 +10,6 @@ if test -z $SHELL
   set --export SHELL (which fish)
 end
 
-# check if gradle is installed
-set --local gradle_version '5.6.2'
-set --local gradle_bin_path "/opt/gradle/gradle-$gradle_version/bin"
-if test -d "$gradle_bin_path"; and not contains $gradle_bin_path $PATH
-  # add gradle to PATH
-  set --export --prepend PATH $gradle_bin_path
-end
-set --erase gradle_version
-set --erase gradle_bin_path
-
 # add user's .local/bin to path for compatibility with systemd
 if test -d "$HOME/.local/bin"; and not contains "$HOME/.local/bin" $PATH
   set --export --prepend PATH "$HOME/.local/bin"
