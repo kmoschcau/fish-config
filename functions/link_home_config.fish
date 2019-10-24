@@ -2,8 +2,7 @@ function link_home_config --description 'Create links to home-config files, if t
   set home_config home-config
   set file_names .aprc .bash_aliases .bash_environment .bash_login .bash_logout\
                  .bash_profile .bashrc .gemrc .inputrc .irbrc .pam_environment\
-                 .powerline-shell.json .profile .tmux.conf .vimrc .xinitrc\
-                 .xinputrc .zprofile .zshrc
+                 .profile .tmux.conf .xinitrc .xinputrc
 
   if not set --query XDG_CONFIG_HOME
     echo 'XDG_CONFIG_HOME is not defined!'
