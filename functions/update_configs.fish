@@ -2,7 +2,7 @@ function update_configs \
          --description 'Update all configurations in XDG_CONFIG_HOME'
   set base_uri git@bitbucket.org:kmoschcau/
   set irregular_configs global-config home-config
-  set configs Code compton fish git i3 i3blocks nvim powerline ranger rofi \
+  set configs Code compton fish fzf git i3 i3blocks nvim powerline ranger rofi \
               rubocop terminator tig
 
   if not command -v git > /dev/null 2> /dev/null
