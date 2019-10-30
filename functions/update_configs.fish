@@ -1,6 +1,25 @@
 function update_configs \
          --description 'Update all configurations in XDG_CONFIG_HOME'
-  set base_uri git@bitbucket.org:kmoschcau/
+
+  argparse --name=update_configs 'h/help' 's-https' -- $argv; or return
+
+  if set --query _flag_help
+    echo -e \
+         '\n' \
+         '\tupdate_configs\n' \
+         '\n' \
+         '    Flags\n' \
+         '\t( -h | --help ) -> Show this help.\n' \
+         '\t( --https )     -> Use https protocol instead of git for new repos.'
+    return
+  end
+
+  if set --query _flag_https
+    set base_uri https://kmoschcau@bitbucket.org/kmoschcau/
+  else
+    set base_uri git@bitbucket.org:kmoschcau/
+  end
+
   set irregular_configs global-config home-config
   set configs Code compton fish fzf git i3 i3blocks nvim powerline ranger rofi \
               rubocop terminator tig
