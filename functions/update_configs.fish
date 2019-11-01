@@ -21,8 +21,8 @@ function update_configs \
   end
 
   set irregular_configs global-config home-config
-  set configs Code compton fish fzf git i3 i3blocks nvim powerline ranger rofi \
-              rubocop terminator tig
+  set configs Code compton dunst fish fzf git i3 i3blocks nvim powerline \
+              ranger rofi rubocop terminator tig
 
   if not command -v git > /dev/null 2> /dev/null
     echo 'git is not installed!'
