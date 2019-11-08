@@ -10,6 +10,12 @@ if test -z $SHELL
   set --export SHELL (which fish)
 end
 
+# check if the java default directory exists
+if test -d /usr/lib/jvm/default
+  # set the JAVA_HOME var
+  set --export JAVA_HOME /usr/lib/jvm/default
+end
+
 # add user's .local/bin to path for compatibility with systemd
 if test -d "$HOME/.local/bin"; and not contains "$HOME/.local/bin" $PATH
   set --export --prepend PATH "$HOME/.local/bin"
