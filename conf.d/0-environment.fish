@@ -97,7 +97,7 @@ if command --search fzf > /dev/null 2> /dev/null
   else if command --search ag > /dev/null 2> /dev/null
     set --export FZF_DEFAULT_COMMAND 'ag --files-with-matches --hidden'
   else
-    set --export FZF_DEFAULT_COMMAND 'find -type -f'
+    set --export FZF_DEFAULT_COMMAND 'find -type f'
   end
 end
 
