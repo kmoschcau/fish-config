@@ -250,7 +250,7 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
 
   if test -n "$stashes" -a "$stashes" -ne 0
     set_color $yellow_500
-    echo -n "⚐ $stashes"
+    echo -n "⚑ $stashes"
     set_color $blue_grey_50
     echo -n ' '
   end
