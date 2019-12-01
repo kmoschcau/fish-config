@@ -116,7 +116,8 @@ end
 
 function fish_git_prompt_untracked \
          --description 'Get the count of untracked files.'
-  echo (command git ls-files --others --exclude-standard 2> /dev/null | \
+  echo (command git ls-files --others --exclude-standard -- \
+                    (command git rev-parse --show-toplevel) 2> /dev/null | \
         wc --lines)
 end
 
