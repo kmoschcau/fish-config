@@ -22,7 +22,7 @@ function update_configs \
 
   set irregular_configs global-config home-config
   set configs compton dunst fish fzf git i3 i3blocks nvim ranger rofi rubocop \
-              terminator tig
+              terminator tmux tig
 
   if not command -v git > /dev/null 2> /dev/null
     echo 'git is not installed!'
