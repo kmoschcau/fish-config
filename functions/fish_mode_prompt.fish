@@ -22,10 +22,14 @@ function fish_mode_prompt --description 'Write out the current mode in the promp
         set background $blue_600
         set_color --bold --background $background $blue_grey_50
         echo -n ' I '
-      case replace_one
+      case replace
         set background $amber_600
         set_color --bold --background $background $blue_grey_50
         echo -n ' R '
+      case replace_one
+        set background $amber_600
+        set_color --bold --background $background $blue_grey_50
+        echo -n ' r '
       case visual
         set background $cyan_100
         set_color --bold --background $background $blue_grey_700
