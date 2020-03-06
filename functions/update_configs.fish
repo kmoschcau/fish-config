@@ -24,7 +24,7 @@ function update_configs \
   set configs compton dunst fish fzf git i3 i3blocks nvim ranger rofi rubocop \
               terminator tmux tig
 
-  if not command -v git > /dev/null 2> /dev/null
+  if not command -v git &> /dev/null
     echo 'git is not installed!'
     return 1
   end

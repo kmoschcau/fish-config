@@ -89,12 +89,12 @@ end
 deduplicate_path
 
 # add default settings for fzf, if it is installed
-if command --search fzf > /dev/null 2> /dev/null
+if command --search fzf &> /dev/null
   set --export FZF_DEFAULT_OPTS (cat $HOME/.config/fzf/default_opts.txt)
 
-  if command --search rg > /dev/null 2> /dev/null
+  if command --search rg &> /dev/null
     set --export FZF_DEFAULT_COMMAND 'rg --files --hidden'
-  else if command --search ag > /dev/null 2> /dev/null
+  else if command --search ag &> /dev/null
     set --export FZF_DEFAULT_COMMAND 'ag --files-with-matches --hidden'
   else
     set --export FZF_DEFAULT_COMMAND 'find -type f'
