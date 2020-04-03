@@ -176,36 +176,36 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
   set --local yellow_500 ffeb3b
   set --local yellow_600 fdd835
   set --local orange_500 ff9800
-  set --local blue_grey_50 eceff1
-  set --local blue_grey_300 90a4ae
-  set --local blue_grey_700 455a64
+  set --local grey_50 fafafa
+  set --local grey_300 e0e0e0
+  set --local grey_700 616161
 
   # write the status line part
-  set_color $blue_grey_50 --background $blue_grey_700
+  set_color $grey_50 --background $grey_700
   echo -n ' '
 
   if test -n "$dir_warning"
     set_color $orange_500
     echo -n $dir_warning
-    set_color $blue_grey_300
+    set_color $grey_300
     echo -n '  '
-    set_color $blue_grey_50
+    set_color $grey_50
   end
 
   if test -n "$operation"
     set_color $orange_500
     echo -n $operation
-    set_color $blue_grey_300
+    set_color $grey_300
     echo -n '  '
-    set_color $blue_grey_50
+    set_color $grey_50
   end
 
   if test -n "$last_tag"
     set_color $yellow_600
     echo -n $last_tag
-    set_color $blue_grey_300
+    set_color $grey_300
     echo -n '  '
-    set_color $blue_grey_50
+    set_color $grey_50
   end
 
   if test -n "$branch"
@@ -214,7 +214,7 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
     end
     echo -n $branch
     if test "$detached" = 'true'
-      set_color $blue_grey_50
+      set_color $grey_50
     end
     echo -n ' '
   end
@@ -222,21 +222,21 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
   if test -n "$behind" -a "$behind" -ne 0
     set_color $light_blue_A100
     echo -n "↓$behind"
-    set_color $blue_grey_50
+    set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$ahead" -a "$ahead" -ne 0
     set_color $light_blue_A100
     echo -n "↑$ahead"
-    set_color $blue_grey_50
+    set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$cherry_equal" -a "$cherry_equal" -ne 0
     set_color $light_blue_A100
     echo -n "🍒$cherry_equal"
-    set_color $blue_grey_50
+    set_color $grey_50
     echo -n ' '
   end
 
@@ -244,43 +244,43 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
           -n "$dirty" -a "$dirty" -ne 0 -o \
           -n "$stashes" -a "$stashes" -ne 0 -o \
           -n "$untracked" -a "$untracked" -ne 0
-    set_color $blue_grey_300
+    set_color $grey_300
     echo -n ' '
-    set_color $blue_grey_50
+    set_color $grey_50
   end
 
   if test -n "$stashes" -a "$stashes" -ne 0
     set_color $yellow_500
     echo -n "⚑ $stashes"
-    set_color $blue_grey_50
+    set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$staged" -a "$staged" -ne 0
     set_color $green_A700
     echo -n "● $staged"
-    set_color $blue_grey_50
+    set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$unmerged" -a "$unmerged" -ne 0
     set_color $red_300
     echo -n "✖ $unmerged"
-    set_color $blue_grey_50
+    set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$dirty" -a "$dirty" -ne 0
     set_color $red_A100
     echo -n "✚ $dirty"
-    set_color $blue_grey_50
+    set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$untracked" -a "$untracked" -ne 0
     set_color $red_A200
     echo -n "… $untracked"
-    set_color $blue_grey_50
+    set_color $grey_50
     echo -n ' '
   end
 end
