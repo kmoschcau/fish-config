@@ -7,5 +7,6 @@ function link_vim_dir --description 'Create links to approriate nvim files in ~/
   ln --symbolic ~/.config/nvim/colors/ ~/.vim/colors
   ln --symbolic ~/.config/nvim/ftplugin/ ~/.vim/ftplugin
   ln --symbolic ~/.local/share/nvim/plugged/ ~/.vim/plugged
-  ln --symbolic ~/.config/nvim/init.vim ~/.vimrc
+  ln --symbolic ~/.config/nvim/ginit.vim ~/.vim/gvimrc
+  ln --symbolic ~/.config/nvim/init.vim ~/.vim/vimrc
 end
