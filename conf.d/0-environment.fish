@@ -65,6 +65,18 @@ if test -d "$HOME/.nodenv"
   status --is-interactive; and nodenv init - | source -
 end
 
+# check if jenv is installed
+if test -d "$HOME/.jenv"
+  # create JENV_ROOT
+  set --export JENV_ROOT "$HOME/.jenv"
+  # add JENV_ROOT binaries to PATH
+  if not contains "$JENV_ROOT/bin" $PATH
+    set --export --prepend PATH "$JENV_ROOT/bin"
+  end
+  # load jenv
+  status --is-interactive; and jenv init - | source -
+end
+
 # check if yarn (node package manager) is installed
 if test -d "$HOME/.yarn"
   # add yarn binaries to PATH
