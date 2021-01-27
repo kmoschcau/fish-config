@@ -1,28 +1,22 @@
 function update_configs \
          --description 'Update all configurations in XDG_CONFIG_HOME'
 
-  argparse --name=update_configs 'h/help' 's-https' -- $argv; or return
+  argparse --name=update_configs 'h/help' -- $argv; or return
 
   if set --query _flag_help
     echo -e \
-         '\n' \
-         '\tupdate_configs\n' \
-         '\n' \
+         'update_configs\n' \
          '    Flags\n' \
-         '\t( -h | --help ) -> Show this help.\n' \
+         '\t( -h | --help ) -> Show this help and exit.\n' \
          '\t( --https )     -> Use https protocol instead of git for new repos.'
     return
   end
 
-  if set --query _flag_https
-    set base_uri https://kmoschcau@bitbucket.org/kmoschcau/
-  else
-    set base_uri git@bitbucket.org:kmoschcau/
-  end
+  set base_uri git@github.com:kmoschcau/
 
   set irregular_configs global-config home-config
   set configs compton dunst fish fzf git i3 i3blocks nvim ranger rofi rubocop \
-              terminator tmux tig
+              terminator tig tmux
 
   if not command -v git &> /dev/null
     echo 'git is not installed!'
@@ -48,7 +42,7 @@ function update_configs \
     else
       echo "Existing $config_name repository, updating..."
       pushd $dir_name
-      git fetch --prune; and git pull
+      git fetch --prune --prune-tags; and git pull
       popd
     end
     echo "Updated $config_name."
@@ -63,7 +57,7 @@ function update_configs \
     else
       echo "Existing $config_name repository, updating..."
       pushd $dir_name
-      git fetch --prune; and git pull
+      git fetch --prune --prune-tags; and git pull
       popd
     end
     echo "Updated $config_name-config."
