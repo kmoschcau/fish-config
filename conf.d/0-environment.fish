@@ -124,6 +124,9 @@ set --export GREP_COLORS (string join ':'\
                                       'bn=38;2;96;125;139;48;2;144;164;174'\
                                       'se=38;2;96;125;139;48;2;144;164;174')
 
+# set the default Glamour style
+set --export GLAMOUR_STYLE ~/.config/glamour/material.json
+
 # editor used by `bundle open <gem>`
 set --export BUNDLER_EDITOR 'nvim'
 # editor used as "line editor"
