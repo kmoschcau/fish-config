@@ -15,8 +15,8 @@ function update_configs \
   set base_uri git@github.com:kmoschcau/
 
   set irregular_configs global-config home-config
-  set configs bat dunst fish fzf git glamour i3 i3blocks nvim picom ranger \
-              rofi rubocop terminator tig tmux
+  set configs alacritty bat dunst fish fzf git glamour i3 i3blocks nvim picom \
+              ranger rofi rubocop terminator tig tmux
 
   if not command -v git &> /dev/null
     echo 'git is not installed!'
