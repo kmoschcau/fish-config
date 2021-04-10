@@ -17,24 +17,17 @@ if test -d /usr/lib/jvm/default
 end
 
 # add user's .local/bin to path for compatibility with systemd
-if test -d "$HOME/.local/bin"; and not contains "$HOME/.local/bin" $PATH
-  set --export --prepend PATH "$HOME/.local/bin"
-end
+fish_add_path --path "$HOME/.local/bin"
 
-# check if rustup (Rust version and package manager) is installed
-if test -d "$HOME/.cargo"; and not contains "$HOME/.cargo/bin" $PATH
-  # add rustup (Rust version and package manager) to path
-  set --export --prepend PATH "$HOME/.cargo/bin"
-end
+# add rustup (Rust version and package manager) to path
+fish_add_path --path "$HOME/.cargo/bin"
 
 # check if pyenv is installed
 if test -d "$HOME/.pyenv"
   # create PYENV_ROOY
   set --export PYENV_ROOT "$HOME/.pyenv"
   # add PYENV_ROOT binaries to PATH
-  if not contains "$PYENV_ROOT/bin" $PATH
-    set --export --prepend PATH "$PYENV_ROOT/bin"
-  end
+  fish_add_path --path "$PYENV_ROOT/bin"
   # enabled dynamic Python libraries
   set --export PYTHON_CONFIGURE_OPTS '--enable-shared'
   # load pyenv
@@ -46,9 +39,7 @@ if test -d "$HOME/.rbenv"
   # create RBENV_ROOT
   set --export RBENV_ROOT "$HOME/.rbenv"
   # add RBENV_ROOT binaries to PATH
-  if not contains "$RBENV_ROOT/bin" $PATH
-    set --export --prepend PATH "$RBENV_ROOT/bin"
-  end
+  fish_add_path --path "$RBENV_ROOT/bin"
   # load rbenv
   status --is-interactive; and rbenv init - | source -
 end
@@ -58,9 +49,7 @@ if test -d "$HOME/.nodenv"
   # create NODENV_ROOT
   set --export NODENV_ROOT "$HOME/.nodenv"
   # add NODENV_ROOT binaries to PATH
-  if not contains "$NODENV_ROOT/bin" $PATH
-    set --export --prepend PATH "$NODENV_ROOT/bin"
-  end
+  fish_add_path --path "$NODENV_ROOT/bin"
   # load nodenv
   status --is-interactive; and nodenv init - | source -
 end
@@ -70,9 +59,7 @@ if test -d "$HOME/.jenv"
   # create JENV_ROOT
   set --export JENV_ROOT "$HOME/.jenv"
   # add JENV_ROOT binaries to PATH
-  if not contains "$JENV_ROOT/bin" $PATH
-    set --export --prepend PATH "$JENV_ROOT/bin"
-  end
+  fish_add_path --path "$JENV_ROOT/bin"
   # load jenv
   status --is-interactive; and jenv init - | source -
 end
@@ -80,22 +67,13 @@ end
 # check if yarn (node package manager) is installed
 if test -d "$HOME/.yarn"
   # add yarn binaries to PATH
-  if not contains "$HOME/.yarn/bin" $PATH
-    set --export --prepend PATH "$HOME/.yarn/bin"
-  end
-  # check if node modules binaries dir exists
-  if test -d "$HOME/.config/yarn/global/node_modules/.bin"
-    # add node modules binaries to PATH
-    if not contains "$HOME/.config/yarn/global/node_modules/.bin" $PATH
-      set --export --prepend PATH "$HOME/.config/yarn/global/node_modules/.bin"
-    end
-  end
+  fish_add_path --path "$HOME/.yarn/bin"
+  # add node modules binaries to PATH
+  fish_add_path --path "$HOME/.config/yarn/global/node_modules/.bin"
 end
 
 # add user's private bin to PATH, if it exists
-if test -d "$HOME/bin"; and not contains "$HOME/bin" $PATH
-  set --export --prepend PATH "$HOME/bin"
-end
+fish_add_path --path "$HOME/bin"
 
 # remove duplicate entries from path
 deduplicate_path

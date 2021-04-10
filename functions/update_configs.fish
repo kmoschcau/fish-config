@@ -1,17 +1,5 @@
 function update_configs \
          --description 'Update all configurations in XDG_CONFIG_HOME'
-
-  argparse --name=update_configs 'h/help' -- $argv; or return
-
-  if set --query _flag_help
-    echo -e \
-         'update_configs\n' \
-         '    Flags\n' \
-         '\t( -h | --help ) -> Show this help and exit.\n' \
-         '\t( --https )     -> Use https protocol instead of git for new repos.'
-    return
-  end
-
   set base_uri git@github.com:kmoschcau/
 
   set irregular_configs global-config home-config
