@@ -30,6 +30,8 @@ if test -d "$HOME/.pyenv"
   fish_add_path --path "$PYENV_ROOT/bin"
   # enabled dynamic Python libraries
   set --export PYTHON_CONFIGURE_OPTS '--enable-shared'
+  # let the pyenv output add to the path
+  pyenv init --path | source
   # load pyenv
   status --is-interactive; and pyenv init - | source
 end
@@ -41,7 +43,7 @@ if test -d "$HOME/.rbenv"
   # add RBENV_ROOT binaries to PATH
   fish_add_path --path "$RBENV_ROOT/bin"
   # load rbenv
-  status --is-interactive; and rbenv init - | source
+  status --is-interactive; and rbenv init - fish | source
 end
 
 # check if nodenv is installed
