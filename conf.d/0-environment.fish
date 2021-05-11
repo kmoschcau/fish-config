@@ -24,14 +24,14 @@ fish_add_path --path "$HOME/.cargo/bin"
 
 # check if pyenv is installed
 if test -d "$HOME/.pyenv"
-  # create PYENV_ROOY
+  # create PYENV_ROOT
   set --export PYENV_ROOT "$HOME/.pyenv"
   # add PYENV_ROOT binaries to PATH
   fish_add_path --path "$PYENV_ROOT/bin"
   # enabled dynamic Python libraries
   set --export PYTHON_CONFIGURE_OPTS '--enable-shared'
   # load pyenv
-  status --is-interactive; and pyenv init - | source -
+  status --is-interactive; and pyenv init - | source
 end
 
 # check if rbenv is installed
@@ -41,7 +41,7 @@ if test -d "$HOME/.rbenv"
   # add RBENV_ROOT binaries to PATH
   fish_add_path --path "$RBENV_ROOT/bin"
   # load rbenv
-  status --is-interactive; and rbenv init - | source -
+  status --is-interactive; and rbenv init - | source
 end
 
 # check if nodenv is installed
@@ -51,7 +51,7 @@ if test -d "$HOME/.nodenv"
   # add NODENV_ROOT binaries to PATH
   fish_add_path --path "$NODENV_ROOT/bin"
   # load nodenv
-  status --is-interactive; and nodenv init - | source -
+  status --is-interactive; and nodenv init - | source
 end
 
 # check if jenv is installed
@@ -61,7 +61,7 @@ if test -d "$HOME/.jenv"
   # add JENV_ROOT binaries to PATH
   fish_add_path --path "$JENV_ROOT/bin"
   # load jenv
-  status --is-interactive; and jenv init - | source -
+  status --is-interactive; and jenv init - | source
 end
 
 # check if yarn (node package manager) is installed
