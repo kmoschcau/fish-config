@@ -6,6 +6,3 @@
 
 # ignore the fish variables file
 /fish_variables
-
-# ignore Gutetags' notags file
-/.notags
