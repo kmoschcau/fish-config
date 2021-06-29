@@ -85,7 +85,7 @@ if command --search fzf &> /dev/null
   set --export FZF_DEFAULT_OPTS (cat $HOME/.config/fzf/default_opts.txt)
 
   if command --search rg &> /dev/null
-    set --export FZF_DEFAULT_COMMAND 'rg --files --hidden'
+    set --export FZF_DEFAULT_COMMAND 'rg --files --hidden --glob !/.git/'
   else if command --search ag &> /dev/null
     set --export FZF_DEFAULT_COMMAND 'ag --files-with-matches --hidden'
   else
