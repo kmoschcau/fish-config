@@ -1,17 +1,14 @@
 function link_vim_dir --description 'Create links to approriate nvim files in ~/.vim/'
-  mkdir --parents ~/.vim/autoload/
+  mkdir --parents ~/.vim/
 
   ln --symbolic\
      --target-directory ~/.vim/\
      ~/.config/nvim/after/\
-     ~/.config/nvim/coc-settings.json\
+     ~/.config/nvim/autoload/\
      ~/.config/nvim/colors/\
+     ~/.config/nvim/ftdetect/\
      ~/.config/nvim/ftplugin/\
-     ~/.local/share/nvim/plugged/
-  ln --symbolic\
-     --target-directory ~/.vim/autoload/\
-     ~/.config/nvim/autoload/airline/\
-     ~/.local/share/nvim/site/autoload/plug.vim
+     ~/.config/nvim/coc-settings.json
   ln --symbolic ~/.config/nvim/ginit.vim ~/.vim/gvimrc
   ln --symbolic ~/.config/nvim/init.vim ~/.vim/vimrc
 end
