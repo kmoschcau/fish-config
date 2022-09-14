@@ -258,28 +258,28 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
 
   if test -n "$staged" -a "$staged" -ne 0
     set_color $green_A700
-    echo -n "● $staged"
+    echo -n "✓ $staged"
     set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$unmerged" -a "$unmerged" -ne 0
     set_color $red_300
-    echo -n "✖ $unmerged"
+    echo -n " $unmerged"
     set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$dirty" -a "$dirty" -ne 0
     set_color $red_A100
-    echo -n "✚ $dirty"
+    echo -n "✗ $dirty"
     set_color $grey_50
     echo -n ' '
   end
 
   if test -n "$untracked" -a "$untracked" -ne 0
     set_color $red_A200
-    echo -n "… $untracked"
+    echo -n "★ $untracked"
     set_color $grey_50
     echo -n ' '
   end
