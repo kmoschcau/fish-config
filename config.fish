@@ -6,3 +6,6 @@ if status --is-interactive
   # make the selection inclusive
   set fish_cursor_selection_mode inclusive
 end
+
+# silence the greeting
+set --global fish_greeting
