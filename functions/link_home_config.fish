@@ -29,4 +29,8 @@ function link_home_config --description 'Create links to home-config files, if t
       ln --force --interactive --symbolic $target $link_name
     end
   end
+
+  mkdir --parents $HOME/.gnupg
+  ln --force --interactive --symbolic $home_config_path/gpg-agent.conf\
+    $HOME/.gnupg/gpg-agent.conf
 end
