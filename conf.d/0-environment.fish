@@ -104,6 +104,11 @@ set --export GREP_COLORS (string join ':'\
                                       'bn=38;2;96;125;139;48;2;144;164;174'\
                                       'se=38;2;96;125;139;48;2;144;164;174')
 
+if command --search ksshaskpass &> /dev/null
+  set --export SSH_ASKPASS ksshaskpass
+  set --export SSH_ASKPASS_REQUIRE prefer
+end
+
 # set the default Glamour style
 set --export GLAMOUR_STYLE ~/.config/glamour/material.json
 
