@@ -33,4 +33,13 @@ function link_home_config --description 'Create links to home-config files, if t
   mkdir --parents $HOME/.gnupg
   ln --force --interactive --symbolic $home_config_path/gpg-agent.conf\
     $HOME/.gnupg/gpg-agent.conf
+
+  set konsole_path $HOME/.local/share/konsole
+  mkdir --parents $konsole_path
+  set konsole_files 'Material Dark.colorscheme' 'Material Dark.profile' \
+                    'Material Light.colorscheme' 'Material Light.profile'
+  for file_name in $konsole_files
+    ln --force --interactive --symbolic $home_config_path/$file_name \
+      $konsole_path/$file_name
+  end
 end
