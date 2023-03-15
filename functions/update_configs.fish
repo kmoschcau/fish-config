@@ -1,10 +1,22 @@
 function update_configs \
          --description 'Update all configurations in XDG_CONFIG_HOME'
+  argparse 'o/old' 'no-gui' -- $argv
+  or return
+
   set base_uri git@github.com:kmoschcau/
 
+  # irregular configs that are cloned with their names as-is
   set irregular_configs global-config home-config
-  set configs alacritty bat dunst fish fzf git glamour i3 i3blocks nvim picom \
-              ranger rofi rubocop terminator tig tmux
+
+  # configs that have "-config" in their repo name, but should be cloned into
+  # dirs like their names listed here
+  set configs bat fish fzf git glamour nvim picom ranger tig
+
+  # like configs, but these are no longer actively used
+  set old_configs alacritty dunst i3 i3blocks rofi rubocop terminator tmux
+
+  # like configs, but ones that are only used for GUI apps
+  set gui_configs picom alacritty dunst i3 i3blocks rofi terminator
 
   if not command -v git &> /dev/null
     echo 'git is not installed!'
@@ -34,6 +46,19 @@ function update_configs \
       popd
     end
     echo "Updated $config_name."
+  end
+
+  if set --query _flag_old
+    set --append configs $old_configs
+  end
+
+  if set --query _flag_no_gui
+    for gui_config in $gui_configs
+      set --local index (contains --index -- $gui_config $configs)
+      if set --query index[1]
+        set --erase configs[$index]
+      end
+    end
   end
 
   for config_name in $configs
