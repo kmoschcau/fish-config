@@ -1,6 +1,6 @@
 function bwu \
     --description 'Run `bw unlock (read -s)` with a fancy prompt and set BW_SESSION'
-    if not command --search --quiet bw
+    if not command --query bw
         echo 'bw is not installed!'
         exit 1
     end

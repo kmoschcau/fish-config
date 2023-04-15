@@ -18,7 +18,7 @@ function update_configs \
     # like configs, but ones that are only used for GUI apps
     set gui_configs picom alacritty dunst i3 i3blocks rofi terminator
 
-    if not command -v git &>/dev/null
+    if not command --query git
         echo 'git is not installed!'
         return 1
     end

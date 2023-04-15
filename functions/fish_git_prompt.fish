@@ -135,7 +135,7 @@ end
 
 function fish_git_prompt --description 'Write out the git part of the prompt'
     # First check if git is installed. If not exit with error.
-    if not command --search --quiet git
+    if not command --query git
         return 1
     end
 

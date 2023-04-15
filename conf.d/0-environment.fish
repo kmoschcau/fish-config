@@ -81,12 +81,12 @@ fish_add_path --path "$HOME/bin"
 deduplicate_path
 
 # add default settings for fzf, if it is installed
-if command --search fzf &>/dev/null
+if command --query fzf
     set --export FZF_DEFAULT_OPTS (cat $HOME/.config/fzf/default_opts.txt)
 
-    if command --search rg &>/dev/null
+    if command --query rg
         set --export FZF_DEFAULT_COMMAND 'rg --files --hidden --glob !/.git/'
-    else if command --search ag &>/dev/null
+    else if command --query ag
         set --export FZF_DEFAULT_COMMAND 'ag --files-with-matches --hidden'
     else
         set --export FZF_DEFAULT_COMMAND 'find -type f'
@@ -104,7 +104,7 @@ set --export GREP_COLORS (string join ':'\
                                       'bn=38;2;96;125;139;48;2;144;164;174'\
                                       'se=38;2;96;125;139;48;2;144;164;174')
 
-if command --search ksshaskpass &>/dev/null
+if command --query ksshaskpass
     set --export SSH_ASKPASS ksshaskpass
     set --export SSH_ASKPASS_REQUIRE prefer
 end
