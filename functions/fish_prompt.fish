@@ -18,7 +18,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     # write number of jobs, if any
-    if jobs --quiet
+    if jobs > /dev/null 2> /dev/null
         set sep_bg $material_light_blue_500
         set_color $sep_fg --background $sep_bg
         echo -n ''

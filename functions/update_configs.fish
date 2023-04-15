@@ -1,7 +1,13 @@
 function update_configs \
     --description 'Update all configurations in XDG_CONFIG_HOME'
-    argparse o/old no-gui -- $argv
-    or return
+    for arg in $argv
+        switch $arg
+            case -o --old
+                set _flag_old
+            case --no-gui
+                set _flag_no_gui
+        end
+    end
 
     set base_uri git@github.com:kmoschcau/
 
@@ -18,7 +24,7 @@ function update_configs \
     # like configs, but ones that are only used for GUI apps
     set gui_configs picom alacritty dunst i3 i3blocks rofi terminator
 
-    if not command -v git &>/dev/null
+    if not command --search git > /dev/null 2> /dev/null
         echo 'git is not installed!'
         return 1
     end
