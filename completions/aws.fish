@@ -5,5 +5,5 @@ function __fish_complete_aws
     aws_completer | string trim
 end
 
-test -x (which aws_completer)
+command --query aws_completer
 and complete --command aws --no-files --arguments '(__fish_complete_aws)'
