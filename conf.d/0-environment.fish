@@ -22,6 +22,9 @@ fish_add_path --path "$HOME/.local/bin"
 # add rustup (Rust version and package manager) to path
 fish_add_path --path "$HOME/.cargo/bin"
 
+# add dotnet tools to path
+fish_add_path --path "$HOME/.dotnet/tools"
+
 # check if pyenv is installed
 if test -d "$HOME/.pyenv"
     # create PYENV_ROOT
