@@ -31,16 +31,26 @@ function link_home_config \
         end
     end
 
+    set wsl_regex microsoft
+
+    if string match --regex --quiet $wsl_regex (uname -r)
+        set gpg_config gpg-agent.wsl.conf
+    else
+        set gpg_config gpg-agent.conf
+    end
+
     mkdir --parents $HOME/.gnupg
-    ln --force --interactive --symbolic $home_config_path/gpg-agent.conf \
+    ln --force --interactive --symbolic $home_config_path/$gpg_config \
         $HOME/.gnupg/gpg-agent.conf
 
-    set konsole_path $HOME/.local/share/konsole
-    mkdir --parents $konsole_path
-    set konsole_files 'Material Dark.colorscheme' 'Material Dark.profile' \
-        'Material Light.colorscheme' 'Material Light.profile'
-    for file_name in $konsole_files
-        ln --force --interactive --symbolic $home_config_path/$file_name \
-            $konsole_path/$file_name
+    if not string match --regex --quiet $wsl_regex (uname -r)
+        set konsole_path $HOME/.local/share/konsole
+        mkdir --parents $konsole_path
+        set konsole_files 'Material Dark.colorscheme' 'Material Dark.profile' \
+            'Material Light.colorscheme' 'Material Light.profile'
+        for file_name in $konsole_files
+            ln --force --interactive --symbolic $home_config_path/$file_name \
+                $konsole_path/$file_name
+        end
     end
 end
