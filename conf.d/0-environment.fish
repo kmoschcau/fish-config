@@ -77,6 +77,15 @@ if test -d "$HOME/.yarn"
     fish_add_path --path "$HOME/.config/yarn/global/node_modules/.bin"
 end
 
+if test -d "$HOME/.phpenv"
+    # create PHPENV_ROOT
+    set --export PHPENV_ROOT "$HOME/.phpenv"
+    # add PHPENV_ROOT binaries to PATH
+    fish_add_path --path "$PHPENV_ROOT/bin"
+    # load phpenv
+    status --is-interactive; and phpenv init - | source
+end
+
 # add user's private bin to PATH, if it exists
 fish_add_path --path "$HOME/bin"
 

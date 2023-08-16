@@ -25,6 +25,10 @@ function update_langs \
         gem clean
     end
 
+    if command --query phpenv
+        phpenv update
+    end
+
     if command --query rustup
         rustup update
     end
