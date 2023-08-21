@@ -1,5 +1,15 @@
 function update_langs \
     --description 'Update installed programming languages.'
+
+    # Go =======================================================================
+    if command --query goenv
+        echo "Updating goenv"
+        pushd "$HOME/.goenv"
+        git pull
+        popd
+    end
+
+    # node.js ==================================================================
     if command --query nodenv
         nodenv update
     end
@@ -8,6 +18,12 @@ function update_langs \
         npm update --global
     end
 
+    # PHP ======================================================================
+    if command --query phpenv
+        phpenv update
+    end
+
+    # Python ===================================================================
     if command --query pyenv
         pyenv update
     end
@@ -16,6 +32,7 @@ function update_langs \
         pip-review --auto
     end
 
+    # Ruby =====================================================================
     if command --query rbenv
         rbenv update
     end
@@ -25,10 +42,7 @@ function update_langs \
         gem clean
     end
 
-    if command --query phpenv
-        phpenv update
-    end
-
+    # Rust =====================================================================
     if command --query rustup
         rustup update
     end

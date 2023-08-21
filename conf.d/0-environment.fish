@@ -34,6 +34,16 @@ if test -d "$HOME/.dotnet"
     fish_add_path --path "$HOME/.dotnet/tools"
 end
 
+# check if goenv is installed
+if test -d "$HOME/.goenv"
+    # create GOENV_ROOT
+    set --export GOENV_ROOT "$HOME/.goenv"
+    # add GOENV_ROOT binaries to PATH
+    fish_add_path --path "$GOENV_ROOT/bin"
+    # load goenv
+    status --is-interactive; and goenv init - | source
+end
+
 # check if jenv is installed
 if test -d "$HOME/.jenv"
     # create JENV_ROOT
@@ -54,6 +64,7 @@ if test -d "$HOME/.nodenv"
     status --is-interactive; and nodenv init - | source
 end
 
+# check if phpenv is installed
 if test -d "$HOME/.phpenv"
     # create PHPENV_ROOT
     set --export PHPENV_ROOT "$HOME/.phpenv"
