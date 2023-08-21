@@ -16,14 +16,52 @@ if test -d /usr/lib/jvm/default
     set --export JAVA_HOME /usr/lib/jvm/default
 end
 
-# add user's .local/bin to path for compatibility with systemd
-fish_add_path --path "$HOME/.local/bin"
+# check if .local/bin exists
+if test -d "$HOME/.local/bin"
+    # add user's .local/bin to path for compatibility with systemd
+    fish_add_path --path "$HOME/.local/bin"
+end
 
-# add rustup (Rust version and package manager) to path
-fish_add_path --path "$HOME/.cargo/bin"
+# check if cargo is installed
+if test -d "$HOME/.cargo"
+    # add rustup (Rust version and package manager) to path
+    fish_add_path --path "$HOME/.cargo/bin"
+end
 
-# add dotnet tools to path
-fish_add_path --path "$HOME/.dotnet/tools"
+# check if dotnet is installed
+if test -d "$HOME/.dotnet"
+    # add dotnet tools to path
+    fish_add_path --path "$HOME/.dotnet/tools"
+end
+
+# check if jenv is installed
+if test -d "$HOME/.jenv"
+    # create JENV_ROOT
+    set --export JENV_ROOT "$HOME/.jenv"
+    # add JENV_ROOT binaries to PATH
+    fish_add_path --path "$JENV_ROOT/bin"
+    # load jenv
+    status --is-interactive; and jenv init - | source
+end
+
+# check if nodenv is installed
+if test -d "$HOME/.nodenv"
+    # create NODENV_ROOT
+    set --export NODENV_ROOT "$HOME/.nodenv"
+    # add NODENV_ROOT binaries to PATH
+    fish_add_path --path "$NODENV_ROOT/bin"
+    # load nodenv
+    status --is-interactive; and nodenv init - | source
+end
+
+if test -d "$HOME/.phpenv"
+    # create PHPENV_ROOT
+    set --export PHPENV_ROOT "$HOME/.phpenv"
+    # add PHPENV_ROOT binaries to PATH
+    fish_add_path --path "$PHPENV_ROOT/bin"
+    # load phpenv
+    status --is-interactive; and phpenv init - | source
+end
 
 # check if pyenv is installed
 if test -d "$HOME/.pyenv"
@@ -49,41 +87,12 @@ if test -d "$HOME/.rbenv"
     status --is-interactive; and rbenv init - fish | source
 end
 
-# check if nodenv is installed
-if test -d "$HOME/.nodenv"
-    # create NODENV_ROOT
-    set --export NODENV_ROOT "$HOME/.nodenv"
-    # add NODENV_ROOT binaries to PATH
-    fish_add_path --path "$NODENV_ROOT/bin"
-    # load nodenv
-    status --is-interactive; and nodenv init - | source
-end
-
-# check if jenv is installed
-if test -d "$HOME/.jenv"
-    # create JENV_ROOT
-    set --export JENV_ROOT "$HOME/.jenv"
-    # add JENV_ROOT binaries to PATH
-    fish_add_path --path "$JENV_ROOT/bin"
-    # load jenv
-    status --is-interactive; and jenv init - | source
-end
-
 # check if yarn (node package manager) is installed
 if test -d "$HOME/.yarn"
     # add yarn binaries to PATH
     fish_add_path --path "$HOME/.yarn/bin"
     # add node modules binaries to PATH
     fish_add_path --path "$HOME/.config/yarn/global/node_modules/.bin"
-end
-
-if test -d "$HOME/.phpenv"
-    # create PHPENV_ROOT
-    set --export PHPENV_ROOT "$HOME/.phpenv"
-    # add PHPENV_ROOT binaries to PATH
-    fish_add_path --path "$PHPENV_ROOT/bin"
-    # load phpenv
-    status --is-interactive; and phpenv init - | source
 end
 
 # add user's private bin to PATH, if it exists
