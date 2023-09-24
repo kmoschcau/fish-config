@@ -257,14 +257,14 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
     end
 
     if test -n "$dirty" -a "$dirty" -ne 0
-        set_color $material_red_A100
+        set_color $material_red_A200
         echo -n "󰄱 $dirty"
         set_color $material_grey_50
         echo -n ' '
     end
 
     if test -n "$untracked" -a "$untracked" -ne 0
-        set_color $material_red_A200
+        set_color $material_red_A100
         echo -n " $untracked"
         set_color $material_grey_50
         echo -n ' '
