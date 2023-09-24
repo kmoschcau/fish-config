@@ -244,7 +244,7 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
 
     if test -n "$staged" -a "$staged" -ne 0
         set_color $material_green_A700
-        echo -n "✓ $staged"
+        echo -n " $staged"
         set_color $material_grey_50
         echo -n ' '
     end
@@ -258,14 +258,14 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
 
     if test -n "$dirty" -a "$dirty" -ne 0
         set_color $material_red_A100
-        echo -n "✗ $dirty"
+        echo -n "󰄱 $dirty"
         set_color $material_grey_50
         echo -n ' '
     end
 
     if test -n "$untracked" -a "$untracked" -ne 0
         set_color $material_red_A200
-        echo -n "★ $untracked"
+        echo -n " $untracked"
         set_color $material_grey_50
         echo -n ' '
     end
