@@ -31,8 +31,6 @@ function link_home_config \
         end
     end
 
-    set wsl_regex microsoft
-
     if command --query pinentry-qt
         set gpg_config gpg-agent.qt.conf
     else
@@ -43,7 +41,7 @@ function link_home_config \
     ln --force --interactive --symbolic $home_config_path/$gpg_config \
         $HOME/.gnupg/gpg-agent.conf
 
-    if not string match --regex --quiet $wsl_regex (uname -r)
+    if command --query konsole
         set konsole_path $HOME/.local/share/konsole
         mkdir --parents $konsole_path
         set konsole_files 'Material Dark.colorscheme' 'Material Dark.profile' \
