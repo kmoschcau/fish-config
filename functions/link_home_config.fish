@@ -33,8 +33,8 @@ function link_home_config \
 
     set wsl_regex microsoft
 
-    if string match --regex --quiet $wsl_regex (uname -r)
-        set gpg_config gpg-agent.wsl.conf
+    if command --query pinentry-qt
+        set gpg_config gpg-agent.qt.conf
     else
         set gpg_config gpg-agent.conf
     end
