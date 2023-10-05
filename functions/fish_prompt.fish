@@ -7,6 +7,12 @@ function fish_prompt --description 'Write out the prompt'
     set --local sep_fg $material_grey_100
     set --local sep_bg normal
 
+    # send operating system command (OSC) escape sequence for cwd
+    # used with Windows Terminal
+    if set --query WT_SESSION; and command --query wslpath
+        printf "\e]9;9;%s\e\\" (wslpath -w $PWD)
+    end
+
     # write the hostname, if connected via ssh
     if set --query SSH_CLIENT; or set --query SSH_TTY
         set sep_bg $material_orange_500
