@@ -157,5 +157,7 @@ set --export SYSTEMD_EDITOR nvim
 fish_ssh_agent
 
 # Configure pinentry to use the correct TTY
-set --export GPG_TTY (tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
+if command --query gpg-connect-agent
+    set --export GPG_TTY (tty)
+    gpg-connect-agent updatestartuptty /bye >/dev/null
+end
