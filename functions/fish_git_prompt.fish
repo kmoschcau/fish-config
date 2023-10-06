@@ -100,25 +100,23 @@ function fish_git_prompt_state_info \
 end
 
 function fish_git_prompt_dirty --description 'Get the count of dirty files.'
-    echo (command git diff --name-only --diff-filter=u 2> /dev/null | \
-        wc --lines)
+    echo (command git diff --name-only --diff-filter=u 2> /dev/null | wc -l)
 end
 
 function fish_git_prompt_staged --description 'Get the count of staged files.'
-    echo (command git diff --staged --name-only 2> /dev/null | \
-        wc --lines)
+    echo (command git diff --staged --name-only 2> /dev/null | wc -l)
 end
 
 function fish_git_prompt_unmerged \
     --description 'Get the count of unmerged files.'
-    echo (command git diff --name-only --diff-filter=U 2> /dev/null | wc --lines)
+    echo (command git diff --name-only --diff-filter=U 2> /dev/null | wc -l)
 end
 
 function fish_git_prompt_untracked \
     --description 'Get the count of untracked files.'
     echo (command git ls-files --others --exclude-standard -- \
                     (command git rev-parse --show-toplevel) 2> /dev/null | \
-        wc --lines)
+        wc -l)
 end
 
 function fish_git_prompt_stashed --description 'Get the count of stashes.'

@@ -44,7 +44,7 @@ function fish_prompt --description 'Write out the prompt'
         set_color $sep_fg --background $sep_bg
         echo -n ''
         set_color $material_grey_50
-        printf ' %d ' (jobs | wc --lines)
+        printf ' %d ' (jobs | wc -l)
         set sep_fg $material_light_blue_500
     end
 
