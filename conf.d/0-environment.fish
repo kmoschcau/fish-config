@@ -144,6 +144,10 @@ end
 # set the default Glamour style
 set --export GLAMOUR_STYLE ~/.config/glamour/material.json
 
+# set the LAUNCH_EDITOR variable for vite's inspector plugin
+command --query launch_editor
+and set --export LAUNCH_EDITOR launch_editor
+
 # editor used by `bundle open <gem>`
 set --export BUNDLER_EDITOR nvim
 # editor used as "line editor"
