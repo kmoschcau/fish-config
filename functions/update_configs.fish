@@ -10,10 +10,10 @@ function update_configs \
 
     # configs that have "-config" in their repo name, but should be cloned into
     # dirs like their names listed here
-    set configs bat fish fzf git glamour nvim picom ranger tig
+    set configs bat fish fzf git glamour nvim ranger tig
 
     # like configs, but these are no longer actively used
-    set old_configs alacritty dunst i3 i3blocks rofi rubocop terminator tmux
+    set old_configs alacritty dunst i3 i3blocks picom rofi rubocop terminator tmux
 
     # like configs, but ones that are only used for GUI apps
     set gui_configs picom alacritty dunst i3 i3blocks rofi terminator
