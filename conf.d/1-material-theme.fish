@@ -62,5 +62,6 @@ set fish_pager_color_selected_background --background $material_cyan_100
 # cursor shapes for the different vi modes {{{1
 set fish_cursor_default block blink
 set fish_cursor_insert line blink
+set fish_cursor_replace underscore blink
 set fish_cursor_replace_one underscore blink
 set fish_cursor_visual block
