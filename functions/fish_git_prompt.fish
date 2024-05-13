@@ -55,7 +55,7 @@ function fish_git_prompt_state_info \
         end
     end
 
-    # If there are steps and total, add it do the opration.
+    # If there are steps and total, add it do the operation
     if test -n "$step" -a -n "$total"
         set operation "$operation $step/$total"
     end

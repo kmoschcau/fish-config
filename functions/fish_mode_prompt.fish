@@ -28,7 +28,7 @@ function fish_mode_prompt \
                 echo -n ' V '
         end
 
-        # write seperator
+        # write separator
         set_color $background --background $material_grey_100
         echo -n ''
 
