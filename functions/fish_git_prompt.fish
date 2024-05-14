@@ -25,32 +25,32 @@ function fish_git_prompt_state_info \
     set --local op_status
 
     # Read the current operation and some additional info from git files.
-    if test -d $git_dir/rebase-merge
+    if test -d "$git_dir/rebase-merge"
         set step (cat $git_dir/rebase-merge/msgnum 2> /dev/null)
         set total (cat $git_dir/rebase-merge/end 2> /dev/null)
-        if test -f $git_dir/rebase-merge/interactive
+        if test -f "$git_dir/rebase-merge/interactive"
             set operation REBASE-i
         else
             set operation REBASE-m
         end
     else
-        if test -d $git_dir/rebase-apply
+        if test -d "$git_dir/rebase-apply"
             set step (cat $git_dir/rebase-apply/next 2> /dev/null)
             set total (cat $git_dir/rebase-apply/last 2> /dev/null)
-            if test -f $git_dir/rebase-apply/rebasing
+            if test -f "$git_dir/rebase-apply/rebasing"
                 set operation REBASE
-            else if test -f $git_dir/rebase-apply/applying
+            else if test -f "$git_dir/rebase-apply/applying"
                 set operation AM
             else
                 set operation AM/REBASE
             end
-        else if test -f $git_dir/MERGE_HEAD
+        else if test -f "$git_dir/MERGE_HEAD"
             set operation MERGING
-        else if test -f $git_dir/CHERRY_PICK_HEAD
+        else if test -f "$git_dir/CHERRY_PICK_HEAD"
             set operation CHERRY-PICKING
-        else if test -f $git_dir/REVERT_HEAD
+        else if test -f "$git_dir/REVERT_HEAD"
             set operation REVERTING
-        else if test -f $git_dir/BISECT_LOG
+        else if test -f "$git_dir/BISECT_LOG"
             set operation BISECTING
         end
     end

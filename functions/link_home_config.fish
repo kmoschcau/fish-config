@@ -9,13 +9,13 @@ function link_home_config \
         return 1
     end
 
-    if not test -d $XDG_CONFIG_HOME
+    if not test -d "$XDG_CONFIG_HOME"
         echo 'XDG_CONFIG_HOME dir does not exist!'
         return 2
     end
 
     set home_config_path $XDG_CONFIG_HOME/$home_config
-    if not test -d $home_config_path
+    if not test -d "$home_config_path"
         echo "$home_config_path dir does not exist!"
         return 3
     end
@@ -24,7 +24,7 @@ function link_home_config \
         echo "Creating link for $file_name..."
         set target $home_config_path/$file_name
         set link_name $HOME/$file_name
-        if not test -e $target
+        if not test -e "$target"
             echo "$target does not exist! Skipping it."
         else
             ln --force --interactive --symbolic $target $link_name

@@ -28,7 +28,7 @@ function update_configs \
         return 2
     end
 
-    if not test -d $XDG_CONFIG_HOME
+    if not test -d "$XDG_CONFIG_HOME"
         echo 'XDG_CONFIG_HOME dir does not exist!'
         return 3
     end
@@ -36,7 +36,7 @@ function update_configs \
     for config_name in $irregular_configs
         echo "Updating $config_name..."
         set dir_name $XDG_CONFIG_HOME/$config_name
-        if not test -d $dir_name
+        if not test -d "$dir_name"
             echo "No $config_name repository, cloning..."
             git clone $base_uri$config_name.git $dir_name
         else
@@ -64,7 +64,7 @@ function update_configs \
     for config_name in $configs
         echo "Updating $config_name-config..."
         set dir_name $XDG_CONFIG_HOME/$config_name
-        if not test -d $dir_name
+        if not test -d "$dir_name"
             echo "No $config_name repository, cloning..."
             git clone $base_uri$config_name-config.git $dir_name
         else

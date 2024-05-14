@@ -9,7 +9,7 @@ function fish_prompt --description 'Write out the prompt'
 
     # send operating system command (OSC) escape sequence for command finished
     # ("FTCS_COMMAND_FINISHED")
-    if test $last_status -ne 0
+    if test "$last_status" -ne 0
         printf "\e]133;D;$last_status\e\\"
     else
         printf "\e]133;D\e\\"
@@ -56,7 +56,7 @@ function fish_prompt --description 'Write out the prompt'
 
     # write git status if not empty
     set --local git_status (fish_git_prompt)
-    if test $status -eq 0 -a -n "$git_status"
+    if test "$status" -eq 0 -a -n "$git_status"
         set sep_bg $material_grey_700
         set_color $sep_fg --background $sep_bg
         echo -n ''
@@ -66,7 +66,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     # write the last status
-    if test $last_status -ne 0
+    if test "$last_status" -ne 0
         set sep_bg $material_red_500
         set_color $sep_fg --background $sep_bg
         echo -n ''

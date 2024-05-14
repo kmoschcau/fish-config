@@ -1,10 +1,10 @@
 function hex_to_xterm \
     --description 'Convert passed hex color codes to xterm color codes'
     function value_to_cube_quantifier
-        if test $argv[1] -lt 48
+        if test "$argv[1]" -lt 48
             echo 0
         else
-            if test $argv[1] -lt 114
+            if test "$argv[1]" -lt 114
                 echo 1
             else
                 echo (math "($argv[1] - 35) / 40")
@@ -17,7 +17,7 @@ function hex_to_xterm \
     end
 
     function value_to_gray_index
-        if test $argv[1] -gt 238
+        if test "$argv[1]" -gt 238
             echo 23
         else
             echo (math "($argv[1] - 3) / 10")
@@ -62,9 +62,9 @@ function hex_to_xterm \
     set chan_blue (cube_quantifier_to_value $quant_blue)
 
     # shortcut for when input and channel values are the same
-    if test $chan_red -eq $red
-        and test $chan_green -eq $green
-        and test $chan_blue -eq $blue
+    if test "$chan_red" -eq "$red" -a \
+        "$chan_green" -eq "$green" -a \
+        "$chan_blue" -eq "$blue"
         echo (math "16 + "(color_index $quant_red $quant_green $quant_blue))
         return 0
     end
@@ -80,7 +80,7 @@ function hex_to_xterm \
     set dist_gray (square_distance $gray_val $gray_val $gray_val $red $green $blue)
 
     # calculate return value
-    if test $dist_gray -lt $dist_color
+    if test "$dist_gray" -lt "$dist_color"
         set ret_val (math "232 + $gray_index")
     else
         set ret_val (math "16 + "(color_index $quant_red $quant_green $quant_blue))

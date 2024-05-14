@@ -6,7 +6,7 @@ set --export XDG_CONFIG_HOME "$HOME/.config"
 set --export XDG_DATA_HOME "$HOME/.local/share"
 
 # set the SHELL variable to fish, if it isn't already set
-if test -z $SHELL
+if test -z "$SHELL"
     set --export SHELL (which fish)
 end
 
