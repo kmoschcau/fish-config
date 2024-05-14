@@ -76,7 +76,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     # write superuser warning
-    switch "$USER"
+    switch $USER
         case root toor
             set sep_bg $material_orange_500
             set_color $sep_fg --background $sep_bg
