@@ -65,3 +65,32 @@ set fish_cursor_insert line blink
 set fish_cursor_replace underscore blink
 set fish_cursor_replace_one underscore blink
 set fish_cursor_visual block
+
+function fish_vi_cursor_handle_color \
+    --description 'Set the cursor color for the current mode.' \
+    --on-variable fish_bind_mode \
+    --on-event fish_postexec \
+    --on-event fish_focus_in
+
+    if not contains $fish_key_bindings \
+        fish_vi_key_bindings fish_hybrid_key_bindings
+
+        return
+    end
+
+    switch $fish_bind_mode
+        case insert
+            echo -en "\e]12;rgb:00/7f/bc\e\\"
+        case replace replace_one
+            echo -en "\e]12;rgb:ae/60/01\e\\"
+        case '*'
+            echo -en "\e]12;rgb:01/c4/c4\e\\"
+    end
+end
+
+function fish_vi_cursor_handle_preexec_color \
+    --description 'Set the cursor color for the neutral cursor.' \
+    --on-event fish_preexec
+
+    echo -en "\e]12;rgb:01/c4/c4\e\\"
+end
