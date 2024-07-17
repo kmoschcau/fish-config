@@ -15,6 +15,7 @@ function update_langs \
     end
 
     if command --query npm
+        and string match --invert --quiet system* (nodenv version)
         npm update --global
     end
 
@@ -29,6 +30,7 @@ function update_langs \
     end
 
     if command --query pip-review
+        and string match --invert --quiet system* (pyenv version)
         pip-review --auto
     end
 
@@ -38,6 +40,7 @@ function update_langs \
     end
 
     if command --query gem
+        and string match --invert --quiet system* (rbenv version)
         gem update
         gem clean
     end
