@@ -106,6 +106,12 @@ if test -d "$HOME/.yarn"
     fish_add_path --path "$HOME/.config/yarn/global/node_modules/.bin"
 end
 
+# check if zoxide is installed
+if command --query zoxide
+    # load zoxide
+    status --is-interactive; and zoxide init fish | source
+end
+
 # add user's private bin to PATH, if it exists
 fish_add_path --path "$HOME/bin"
 
