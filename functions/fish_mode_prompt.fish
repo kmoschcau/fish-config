@@ -11,24 +11,39 @@ function fish_mode_prompt \
     set --local background
     switch $fish_bind_mode
         case default
-            set background $material_cyan_A700
-            set_color --bold --background $background $material_grey_50
+            set background $fish_prompt_color_mode_normal_bg
+            set_color \
+                $fish_prompt_color_mode_normal_bold \
+                --background $background \
+                $fish_prompt_color_mode_normal_fg
             echo -n ' N '
         case insert
-            set background $material_blue_600
-            set_color --bold --background $background $material_grey_50
+            set background $fish_prompt_color_mode_insert_bg
+            set_color \
+                $fish_prompt_color_mode_insert_bold \
+                --background $background \
+                $fish_prompt_color_mode_insert_fg
             echo -n ' I '
         case replace
-            set background $material_amber_600
-            set_color --bold --background $background $material_grey_50
+            set background $fish_prompt_color_mode_replace_bg
+            set_color \
+                $fish_prompt_color_mode_replace_bold \
+                --background $background \
+                $fish_prompt_color_mode_replace_fg
             echo -n ' R '
         case replace_one
-            set background $material_amber_600
-            set_color --bold --background $background $material_grey_50
+            set background $fish_prompt_color_mode_replace_bg
+            set_color \
+                $fish_prompt_color_mode_replace_bold \
+                --background $background \
+                $fish_prompt_color_mode_replace_fg
             echo -n ' r '
         case visual
-            set background $material_cyan_100
-            set_color --bold --background $background $material_grey_700
+            set background $fish_prompt_color_mode_visual_bg
+            set_color \
+                $fish_prompt_color_mode_visual_bold \
+                --background $background \
+                $fish_prompt_color_mode_visual_fg
             echo -n ' V '
     end
 
