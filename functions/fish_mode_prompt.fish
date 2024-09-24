@@ -2,7 +2,7 @@ function fish_mode_prompt \
     --description 'Write out the current mode in the prompt.'
 
     if not contains $fish_key_bindings \
-        fish_vi_key_bindings fish_hybrid_key_bindings
+            fish_vi_key_bindings fish_hybrid_key_bindings
 
         return
     end

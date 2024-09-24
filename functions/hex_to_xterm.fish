@@ -63,8 +63,8 @@ function hex_to_xterm \
 
     # shortcut for when input and channel values are the same
     if test "$chan_red" -eq "$red" -a \
-        "$chan_green" -eq "$green" -a \
-        "$chan_blue" -eq "$blue"
+            "$chan_green" -eq "$green" -a \
+            "$chan_blue" -eq "$blue"
         echo (math "16 + "(color_index $quant_red $quant_green $quant_blue))
         return 0
     end
