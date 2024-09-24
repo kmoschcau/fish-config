@@ -13,35 +13,35 @@ function fish_mode_prompt \
         case default
             set background $fish_prompt_color_mode_normal_bg
             set_color \
-                $fish_prompt_color_mode_normal_bold \
+                $fish_prompt_color_mode_normal_decorations \
                 --background $background \
                 $fish_prompt_color_mode_normal_fg
             echo -n ' N '
         case insert
             set background $fish_prompt_color_mode_insert_bg
             set_color \
-                $fish_prompt_color_mode_insert_bold \
+                $fish_prompt_color_mode_insert_decorations \
                 --background $background \
                 $fish_prompt_color_mode_insert_fg
             echo -n ' I '
         case replace
             set background $fish_prompt_color_mode_replace_bg
             set_color \
-                $fish_prompt_color_mode_replace_bold \
+                $fish_prompt_color_mode_replace_decorations \
                 --background $background \
                 $fish_prompt_color_mode_replace_fg
             echo -n ' R '
         case replace_one
             set background $fish_prompt_color_mode_replace_bg
             set_color \
-                $fish_prompt_color_mode_replace_bold \
+                $fish_prompt_color_mode_replace_decorations \
                 --background $background \
                 $fish_prompt_color_mode_replace_fg
             echo -n ' r '
         case visual
             set background $fish_prompt_color_mode_visual_bg
             set_color \
-                $fish_prompt_color_mode_visual_bold \
+                $fish_prompt_color_mode_visual_decorations \
                 --background $background \
                 $fish_prompt_color_mode_visual_fg
             echo -n ' V '
