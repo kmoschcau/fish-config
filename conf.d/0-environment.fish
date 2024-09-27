@@ -163,9 +163,6 @@ set --export VISUAL nvim
 # editor for systemd
 set --export SYSTEMD_EDITOR nvim
 
-# set up ssh-agent
-fish_ssh_agent
-
 # Configure pinentry to use the correct TTY
 if command --query gpg-connect-agent
     set --export GPG_TTY (tty)
