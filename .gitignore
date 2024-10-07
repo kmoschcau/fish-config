@@ -1,9 +1,6 @@
 # ignore generated completions
 /completions/fish-lsp.fish
 
-# ignore the generated theme
-/conf.d/1-theme.fish
-
 # ignore the generated fish file
 /fishd.*
 
