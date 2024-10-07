@@ -3,28 +3,35 @@ function fish_prompt --description 'Write out the prompt'
     # function
     set --local last_status $status
 
+    if not contains $fish_key_bindings \
+            fish_vi_key_bindings fish_hybrid_key_bindings
+
+        # Only do this if we are not using the fish_mode_prompt. Otherwise it is
+        # already done in there.
+
+        # send operating system command (OSC) escape sequence for command
+        # finished ("FTCS_COMMAND_FINISHED")
+        if test "$last_status" -ne 0
+            printf "\e]133;D;$last_status\e\\"
+        else
+            printf "\e]133;D\e\\"
+        end
+
+        # send OSC for cwd
+        if command --query wslpath
+            printf "\e]9;9;%s\e\\" (wslpath -w $PWD)
+        else if command --query pwd
+            printf "\e]9;9;%s\e\\" (pwd)
+        end
+
+        # send OSC for prompt start
+        # ("FTCS_PROMPT")
+        printf "\e]133;A\e\\"
+    end
+
     # separator color variables
     set --local sep_fg $material_grey_100
     set --local sep_bg normal
-
-    # send operating system command (OSC) escape sequence for command finished
-    # ("FTCS_COMMAND_FINISHED")
-    if test "$last_status" -ne 0
-        printf "\e]133;D;$last_status\e\\"
-    else
-        printf "\e]133;D\e\\"
-    end
-
-    # send OSC for cwd
-    if command --query wslpath
-        printf "\e]9;9;%s\e\\" (wslpath -w $PWD)
-    else if command --query pwd
-        printf "\e]9;9;%s\e\\" (pwd)
-    end
-
-    # send OSC for prompt start
-    # ("FTCS_PROMPT")
-    printf "\e]133;A\e\\"
 
     # write the hostname, if connected via ssh
     if set --query SSH_CLIENT; or set --query SSH_TTY

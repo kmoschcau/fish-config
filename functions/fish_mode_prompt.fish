@@ -7,6 +7,29 @@ function fish_mode_prompt \
         return
     end
 
+    # get the status first, so it is not overwritten by anything in the prompt
+    # function
+    set --local last_status $status
+
+    # send operating system command (OSC) escape sequence for command finished
+    # ("FTCS_COMMAND_FINISHED")
+    if test "$last_status" -ne 0
+        printf "\e]133;D;$last_status\e\\"
+    else
+        printf "\e]133;D\e\\"
+    end
+
+    # send OSC for cwd
+    if command --query wslpath
+        printf "\e]9;9;%s\e\\" (wslpath -w $PWD)
+    else if command --query pwd
+        printf "\e]9;9;%s\e\\" (pwd)
+    end
+
+    # send OSC for prompt start
+    # ("FTCS_PROMPT")
+    printf "\e]133;A\e\\"
+
     # switch on current mode
     set --local background
     switch $fish_bind_mode
