@@ -116,6 +116,16 @@ end
 
 fish_handle_background_color_change
 
+set fish_prompt_separator_section_bottom_left 
+set fish_prompt_separator_section_bottom_right 
+set fish_prompt_separator_section_top_left 
+set fish_prompt_separator_section_top_right 
+set fish_prompt_separator_component_bottom_left 
+set fish_prompt_separator_component_bottom_right 
+set fish_prompt_separator_component_top_left 
+set fish_prompt_separator_component_top_right 
+set fish_prompt_separator_hierarchy_right 
+
 set fish_cursor_default block blink
 set fish_cursor_insert line blink
 set fish_cursor_replace underscore blink

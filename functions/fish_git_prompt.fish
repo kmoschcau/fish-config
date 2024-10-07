@@ -172,7 +172,7 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
         set_color $material_orange_500
         echo -n $dir_warning
         set_color $material_grey_300
-        echo -n '  '
+        echo -n " $fish_prompt_separator_component_top_left "
         set_color $material_grey_50
     end
 
@@ -180,7 +180,7 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
         set_color $material_orange_500
         echo -n $operation
         set_color $material_grey_300
-        echo -n '  '
+        echo -n " $fish_prompt_separator_component_top_left "
         set_color $material_grey_50
     end
 
@@ -188,7 +188,7 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
         set_color $material_yellow_600
         echo -n $last_tag
         set_color $material_grey_300
-        echo -n '  '
+        echo -n " $fish_prompt_separator_component_top_left "
         set_color $material_grey_50
     end
 
@@ -229,7 +229,7 @@ function fish_git_prompt --description 'Write out the git part of the prompt'
             -n "$stashes" -a "$stashes" -ne 0 -o \
             -n "$untracked" -a "$untracked" -ne 0
         set_color $material_grey_300
-        echo -n ' '
+        echo -n "$fish_prompt_separator_component_top_left "
         set_color $material_grey_50
     end
 

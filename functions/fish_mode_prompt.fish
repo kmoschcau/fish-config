@@ -72,7 +72,7 @@ function fish_mode_prompt \
 
     # write separator
     set_color $background --background $material_grey_100
-    echo -n ''
+    echo -n $fish_prompt_separator_section_top_left
 
     # reset colors
     set_color normal
