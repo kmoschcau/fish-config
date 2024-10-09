@@ -16,7 +16,7 @@ function update_configs \
     set old_configs alacritty dunst i3 i3blocks picom rofi rubocop terminator tmux
 
     # like configs, but ones that are only used for GUI apps
-    set gui_configs picom alacritty dunst i3 i3blocks rofi terminator
+    set gui_configs alacritty dunst fontconfig i3 i3blocks picom rofi terminator wezterm
 
     if not command --query git
         echo 'git is not installed!'
