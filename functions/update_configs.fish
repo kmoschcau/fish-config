@@ -10,7 +10,7 @@ function update_configs \
 
     # configs that have "-config" in their repo name, but should be cloned into
     # dirs like their names listed here
-    set configs bat fish fontconfig fzf git glamour nvim ranger tig yamllint wezterm
+    set configs bat fish fontconfig fzf git glamour nvim ranger tig yamllint wezterm yazi
 
     # like configs, but these are no longer actively used
     set old_configs alacritty dunst i3 i3blocks picom rofi rubocop terminator tmux
