@@ -1,5 +1,6 @@
 function update_configs \
     --description 'Update all configurations in XDG_CONFIG_HOME'
+
     argparse o/old no-gui -- $argv
     or return
 
@@ -33,17 +34,27 @@ function update_configs \
         return 3
     end
 
+    function clone \
+        --argument-names config_name git_uri dir_name
+        echo "No $config_name repository, cloning..."
+        git clone $git_uri $dir_name
+    end
+
+    function update \
+        --argument-names config_name dir_name
+        echo "Existing $config_name repository, updating..."
+        pushd $dir_name
+        git pull --prune
+        popd
+    end
+
     for config_name in $irregular_configs
         echo "Updating $config_name..."
         set dir_name $XDG_CONFIG_HOME/$config_name
         if not test -d "$dir_name"
-            echo "No $config_name repository, cloning..."
-            git clone $base_uri$config_name.git $dir_name
+            clone $config_name $base_uri$config_name.git $dir_name
         else
-            echo "Existing $config_name repository, updating..."
-            pushd $dir_name
-            git fetch --prune --prune-tags; and git pull
-            popd
+            update $config_name $dir_name
         end
         echo "Updated $config_name."
     end
@@ -65,13 +76,9 @@ function update_configs \
         echo "Updating $config_name-config..."
         set dir_name $XDG_CONFIG_HOME/$config_name
         if not test -d "$dir_name"
-            echo "No $config_name repository, cloning..."
-            git clone $base_uri$config_name-config.git $dir_name
+            clone $config_name $base_uri$config_name-config.git $dir_name
         else
-            echo "Existing $config_name repository, updating..."
-            pushd $dir_name
-            git fetch --prune --prune-tags; and git pull
-            popd
+            update $config_name $dir_name
         end
         echo "Updated $config_name-config."
     end
