@@ -54,7 +54,14 @@ if test -d "$HOME/.jenv"
     status --is-interactive; and jenv init - | source
 end
 
-# check if nodenv is installed
+# set up luarocks, if it is installed
+if command --query luarocks
+    set --export LUA_PATH (luarocks path --lr-path)
+    set --export LUA_CPATH (luarocks path --lr-cpath)
+    fish_add_path --path "$HOME/.luarocks/bin"
+end
+
+# set up nodenv
 if test -d "$HOME/.nodenv"
     # create NODENV_ROOT
     set --export NODENV_ROOT "$HOME/.nodenv"
@@ -106,7 +113,7 @@ if test -d "$HOME/.yarn"
     fish_add_path --path "$HOME/.config/yarn/global/node_modules/.bin"
 end
 
-# check if zoxide is installed
+# set up zoxide
 if command --query zoxide
     # load zoxide
     status --is-interactive; and zoxide init fish | source
