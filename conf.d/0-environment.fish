@@ -10,51 +10,41 @@ if test -z "$SHELL"
     set --export SHELL (which fish)
 end
 
-# check if the java default directory exists
+# set up the java default directory
 if test -d /usr/lib/jvm/default
-    # set the JAVA_HOME var
     set --export JAVA_HOME /usr/lib/jvm/default
 end
 
-# check if .local/bin exists
+# add user's .local/bin to path for compatibility with systemd
 if test -d "$HOME/.local/bin"
-    # add user's .local/bin to path for compatibility with systemd
     fish_add_path --path "$HOME/.local/bin"
 end
 
-# check if cargo is installed
+# set up cargo (rust build tool)
 if test -d "$HOME/.cargo"
-    # add rustup (Rust version and package manager) to path
     fish_add_path --path "$HOME/.cargo/bin"
 end
 
-# check if dotnet is installed
+# set up dotnet tools
 if test -d "$HOME/.dotnet"
-    # add dotnet tools to path
     fish_add_path --path "$HOME/.dotnet/tools"
 end
 
-# check if goenv is installed
+# set up goenv
 if test -d "$HOME/.goenv"
-    # create GOENV_ROOT
     set --export GOENV_ROOT "$HOME/.goenv"
-    # add GOENV_ROOT binaries to PATH
     fish_add_path --path "$GOENV_ROOT/bin"
-    # load goenv
     status --is-interactive; and goenv init - | source
 end
 
-# check if jenv is installed
+# set up jenv
 if test -d "$HOME/.jenv"
-    # create JENV_ROOT
     set --export JENV_ROOT "$HOME/.jenv"
-    # add JENV_ROOT binaries to PATH
     fish_add_path --path "$JENV_ROOT/bin"
-    # load jenv
     status --is-interactive; and jenv init - | source
 end
 
-# set up luarocks, if it is installed
+# set up luarocks
 if command --query luarocks
     set --export LUA_PATH (luarocks path --lr-path)
     set --export LUA_CPATH (luarocks path --lr-cpath)
@@ -63,49 +53,35 @@ end
 
 # set up nodenv
 if test -d "$HOME/.nodenv"
-    # create NODENV_ROOT
     set --export NODENV_ROOT "$HOME/.nodenv"
-    # add NODENV_ROOT binaries to PATH
     fish_add_path --path "$NODENV_ROOT/bin"
-    # load nodenv
     status --is-interactive; and nodenv init - | source
 end
 
-# check if phpenv is installed
+# set up phpenv
 if test -d "$HOME/.phpenv"
-    # create PHPENV_ROOT
     set --export PHPENV_ROOT "$HOME/.phpenv"
-    # add PHPENV_ROOT binaries to PATH
     fish_add_path --path "$PHPENV_ROOT/bin"
-    # load phpenv
     status --is-interactive; and phpenv init - | source
 end
 
-# check if pyenv is installed
+# set up pyenv
 if test -d "$HOME/.pyenv"
-    # create PYENV_ROOT
     set --export PYENV_ROOT "$HOME/.pyenv"
-    # add PYENV_ROOT binaries to PATH
     fish_add_path --path "$PYENV_ROOT/bin"
-    # enabled dynamic Python libraries
     set --export PYTHON_CONFIGURE_OPTS --enable-shared
-    # let the pyenv output add to the path
     pyenv init --path | source
-    # load pyenv
     status --is-interactive; and pyenv init - | source
 end
 
-# check if rbenv is installed
+# set up rbenv
 if test -d "$HOME/.rbenv"
-    # create RBENV_ROOT
     set --export RBENV_ROOT "$HOME/.rbenv"
-    # add RBENV_ROOT binaries to PATH
     fish_add_path --path "$RBENV_ROOT/bin"
-    # load rbenv
     status --is-interactive; and rbenv init - fish | source
 end
 
-# check if yarn (node package manager) is installed
+# set up yarn (node package manager)
 if test -d "$HOME/.yarn"
     # add yarn binaries to PATH
     fish_add_path --path "$HOME/.yarn/bin"
@@ -115,7 +91,6 @@ end
 
 # set up zoxide
 if command --query zoxide
-    # load zoxide
     status --is-interactive; and zoxide init fish | source
 end
 
