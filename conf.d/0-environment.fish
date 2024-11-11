@@ -21,24 +21,24 @@ if test -d "$HOME/.local/bin"
 end
 
 # set up cargo (rust build tool)
-if command --query cargo
+if test -d "$HOME/.cargo"
     fish_add_path --path "$HOME/.cargo/bin"
 end
 
 # set up dotnet tools
-if command --query dotnet
+if test -d "$HOME/.dotnet"
     fish_add_path --path "$HOME/.dotnet/tools"
 end
 
 # set up goenv
-if command --query goenv
+if test -d "$HOME/.goenv"
     set --export GOENV_ROOT "$HOME/.goenv"
     fish_add_path --path "$GOENV_ROOT/bin"
     status --is-interactive; and goenv init - | source
 end
 
 # set up jenv
-if command --query jenv
+if test -d "$HOME/.jenv"
     set --export JENV_ROOT "$HOME/.jenv"
     fish_add_path --path "$JENV_ROOT/bin"
     status --is-interactive; and jenv init - | source
@@ -52,21 +52,21 @@ if command --query luarocks
 end
 
 # set up nodenv
-if command --query nodenv
+if test -d "$HOME/.nodenv"
     set --export NODENV_ROOT "$HOME/.nodenv"
     fish_add_path --path "$NODENV_ROOT/bin"
     status --is-interactive; and nodenv init - | source
 end
 
 # set up phpenv
-if command --query phpenv
+if test -d "$HOME/.phpenv"
     set --export PHPENV_ROOT "$HOME/.phpenv"
     fish_add_path --path "$PHPENV_ROOT/bin"
     status --is-interactive; and phpenv init - | source
 end
 
 # set up pyenv
-if command --query pyenv
+if test -d "$HOME/.pyenv"
     set --export PYENV_ROOT "$HOME/.pyenv"
     fish_add_path --path "$PYENV_ROOT/bin"
     set --export PYTHON_CONFIGURE_OPTS --enable-shared
@@ -75,14 +75,14 @@ if command --query pyenv
 end
 
 # set up rbenv
-if command --query rbenv
+if test -d "$HOME/.rbenv"
     set --export RBENV_ROOT "$HOME/.rbenv"
     fish_add_path --path "$RBENV_ROOT/bin"
     status --is-interactive; and rbenv init - fish | source
 end
 
 # set up yarn (node package manager)
-if command --query yarn
+if test -d "$HOME/.yarn"
     # add yarn binaries to PATH
     fish_add_path --path "$HOME/.yarn/bin"
     # add node modules binaries to PATH
