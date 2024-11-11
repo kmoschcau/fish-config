@@ -52,4 +52,9 @@ function update_langs \
     if command --query rustup
         rustup update
     end
+
+    if command --query cargo
+        and string match --quiet '*install-update*' (cargo --list)
+        cargo install-update --all
+    end
 end
