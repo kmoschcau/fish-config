@@ -75,14 +75,6 @@ if command --query rbenv
     status --is-interactive; and rbenv init - fish | source
 end
 
-# set up yarn (node package manager)
-if test -d "$HOME/.yarn"
-    # add yarn binaries to PATH
-    fish_add_path --path "$HOME/.yarn/bin"
-    # add node modules binaries to PATH
-    fish_add_path --path "$HOME/.config/yarn/global/node_modules/.bin"
-end
-
 # set up zoxide
 if command --query zoxide
     status --is-interactive; and zoxide init fish | source
