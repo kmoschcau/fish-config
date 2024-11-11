@@ -16,68 +16,62 @@ if test -d /usr/lib/jvm/default
 end
 
 # add user's .local/bin to path for compatibility with systemd
-if test -d "$HOME/.local/bin"
-    fish_add_path --path "$HOME/.local/bin"
-end
+fish_add_path --path "$HOME/.local/bin"
 
-# set up cargo (rust build tool)
-if test -d "$HOME/.cargo"
-    fish_add_path --path "$HOME/.cargo/bin"
-end
+# set up cargo executables
+fish_add_path --path "$HOME/.cargo/bin"
 
 # set up dotnet tools
-if test -d "$HOME/.dotnet"
-    fish_add_path --path "$HOME/.dotnet/tools"
-end
+fish_add_path --path "$HOME/.dotnet/tools"
 
 # set up goenv
-if test -d "$HOME/.goenv"
+fish_add_path --path "$HOME/.goenv/bin"
+if command --query goenv
     set --export GOENV_ROOT "$HOME/.goenv"
-    fish_add_path --path "$GOENV_ROOT/bin"
     status --is-interactive; and goenv init - | source
 end
 
 # set up jenv
-if test -d "$HOME/.jenv"
+fish_add_path --path "$HOME/.jenv/bin"
+if command --query jenv
     set --export JENV_ROOT "$HOME/.jenv"
-    fish_add_path --path "$JENV_ROOT/bin"
     status --is-interactive; and jenv init - | source
 end
 
 # set up luarocks
+fish_add_path --path "$HOME/.luarocks/bin"
 if command --query luarocks
     set --export LUA_PATH (luarocks path --lr-path)
     set --export LUA_CPATH (luarocks path --lr-cpath)
-    fish_add_path --path "$HOME/.luarocks/bin"
 end
 
 # set up nodenv
-if test -d "$HOME/.nodenv"
+fish_add_path --path "$HOME/.nodenv/bin"
+if command --query nodenv
     set --export NODENV_ROOT "$HOME/.nodenv"
-    fish_add_path --path "$NODENV_ROOT/bin"
     status --is-interactive; and nodenv init - | source
 end
 
 # set up phpenv
-if test -d "$HOME/.phpenv"
+fish_add_path --path "$HOME/.phpenv/bin"
+if command --query phpenv
     set --export PHPENV_ROOT "$HOME/.phpenv"
-    fish_add_path --path "$PHPENV_ROOT/bin"
     status --is-interactive; and phpenv init - | source
 end
 
 # set up pyenv
-if test -d "$HOME/.pyenv"
+fish_add_path --path "$HOME/.pyenv/bin"
+if command --query pyenv
     set --export PYENV_ROOT "$HOME/.pyenv"
-    fish_add_path --path "$PYENV_ROOT/bin"
     set --export PYTHON_CONFIGURE_OPTS --enable-shared
     pyenv init --path | source
     status --is-interactive; and pyenv init - | source
 end
 
 # set up rbenv
-if test -d "$HOME/.rbenv"
+fish_add_path --path "$HOME/.rbenv/bin"
+if command --query rbenv
     set --export RBENV_ROOT "$HOME/.rbenv"
-    fish_add_path --path "$RBENV_ROOT/bin"
     status --is-interactive; and rbenv init - fish | source
 end
 
