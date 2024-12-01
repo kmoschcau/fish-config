@@ -52,6 +52,11 @@ if command --query nodenv
     status --is-interactive; and nodenv init - | source
 end
 
+# set up ocaml
+if test -r "$HOME/.opam/opam-init/init.fish"
+    source "$HOME/.opam/opam-init/init.fish"
+end
+
 # set up phpenv
 fish_add_path --path "$HOME/.phpenv/bin"
 if command --query phpenv
