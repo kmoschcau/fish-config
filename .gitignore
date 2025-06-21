@@ -1,4 +1,5 @@
 # ignore generated completions
+/completions/deno.fish
 /completions/fish-lsp.fish
 
 # ignore the generated fish file

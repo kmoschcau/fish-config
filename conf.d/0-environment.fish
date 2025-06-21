@@ -24,6 +24,9 @@ fish_add_path --path "$HOME/.cargo/bin"
 # set up dotnet tools
 fish_add_path --path "$HOME/.dotnet/tools"
 
+# set up deno executables
+fish_add_path --path "$HOME/.deno/bin"
+
 # set up goenv
 fish_add_path --path "$HOME/.goenv/bin"
 if command --query goenv
